@@ -39,6 +39,7 @@ public class ProductInfoServiceImplTest {
     public void findAll() {
         PageRequest pageRequest = new PageRequest(0, 2);
         Page<ProductInfo> list = productInfoService.findAll(pageRequest);
+        list.forEach(productInfo -> {System.out.println(productInfo.toString());});
         System.out.println(list.getTotalElements());
     }
 

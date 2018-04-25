@@ -14,33 +14,33 @@ import java.util.List;
 @Service
 public class ProductInfoServiceImpl implements ProductInfoService {
 
-   @Autowired
-   private ProductInfoRepository repository;
+    @Autowired
+    private ProductInfoRepository repository;
 
 
-   @Override
-   public ProductInfo findOne(String productInfoId) {
-      return repository.getOne(productInfoId);
-   }
+    @Override
+    public ProductInfo findOne(String productInfoId) {
+        return repository.getOne(productInfoId);
+    }
 
 
-   @Override
-   public List<ProductInfo> findUpAll() {
-      return repository.findByProductStatus(ProductInfoStatusEnum.UP);
-   }
+    @Override
+    public List<ProductInfo> findUpAll() {
+        return repository.findByProductStatus(ProductInfoStatusEnum.UP);
+    }
 
-   @Override
-   public List<ProductInfo> findDownAll() {
-      return repository.findByProductStatus(ProductInfoStatusEnum.DOWN);
-   }
+    @Override
+    public List<ProductInfo> findDownAll() {
+        return repository.findByProductStatus(ProductInfoStatusEnum.DOWN);
+    }
 
-   @Override
-   public Page<ProductInfo> findAll(Pageable pageable) {
-      return repository.findAll(pageable);
-   }
+    @Override
+    public Page<ProductInfo> findAll(Pageable pageable) {
+        return repository.findAll(pageable);
+    }
 
-   @Override
-   public ProductInfo save(ProductInfo productInfo) {
-      return repository.save(productInfo);
-   }
+    @Override
+    public ProductInfo save(ProductInfo productInfo) {
+        return repository.save(productInfo);
+    }
 }
