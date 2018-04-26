@@ -5,13 +5,14 @@ import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 
 @Entity
 @Data
 @DynamicUpdate
-public class ProductInfo {
+public class ProductInfo implements Serializable {
 
 
     @Id
@@ -23,18 +24,17 @@ public class ProductInfo {
 
     private Integer productStock;
 
-    private  String productDescription;
+    private String productDescription;
 
-    private  String productIcon;
+    private String productIcon;
 
-    private  Integer productStatus;
+    private Integer productStatus;
 
-    private  Integer categoryType;
+    private Integer categoryType;
 
     private Date createTime;
 
     private Date updateTime;
-
 
 
 }

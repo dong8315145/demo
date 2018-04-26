@@ -10,7 +10,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- *
+ *产品类别
  */
 @Entity
 @Data
