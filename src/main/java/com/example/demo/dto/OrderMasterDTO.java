@@ -1,7 +1,8 @@
-package com.example.demo.entity;
+package com.example.demo.dto;
 
 import com.example.demo.common.enums.OrderStatusEnum;
 import com.example.demo.common.enums.PayStatusEnum;
+import com.example.demo.entity.OrderDetail;
 import lombok.Data;
 import org.hibernate.annotations.DynamicUpdate;
 
@@ -9,6 +10,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.List;
 
 /**
  * @program: demo
@@ -16,15 +18,12 @@ import java.util.Date;
  * @author: Terdy.Zheng
  * @create: 2018-04-26 11:24
  **/
-@Entity
 @Data
-@DynamicUpdate
-public class OrderMaster {
+public class OrderMasterDTO {
 
     /**
      *
      */
-    @Id
     private String orderId;
     /**
      * 买家名字
@@ -66,5 +65,7 @@ public class OrderMaster {
      */
     private Date updateTime;
 
+
+    private List<OrderDetail> orderDetailList;
 
 }

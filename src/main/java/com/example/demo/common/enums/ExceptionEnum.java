@@ -3,15 +3,13 @@ package com.example.demo.common.enums;
 import lombok.Getter;
 
 @Getter
-public enum OrderStatusEnum {
-    NEW(0, "新建"),
-    FINISHED(1, "完成"),
-    CANCEL(2, "取消");
+public enum ExceptionEnum {
+    NOT(0, "商品不存在");
 
     private Integer code;
     private String msg;
 
-    OrderStatusEnum(Integer code, String msg) {
+    ExceptionEnum(Integer code, String msg) {
         this.code = code;
         this.msg = msg;
     }
