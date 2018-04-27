@@ -3,12 +3,14 @@ package com.example.demo.service.impl;
 import com.example.demo.entity.ProductCategory;
 import com.example.demo.repository.ProductCategoryRepository;
 import com.example.demo.service.ProductCategoryService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
+@Slf4j
 public class ProductCategoryServiceImpl implements ProductCategoryService {
    @Autowired
    private ProductCategoryRepository repository;
