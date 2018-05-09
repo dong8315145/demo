@@ -1,5 +1,6 @@
 package com.example.demo.View.BaseView;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
 
 /**

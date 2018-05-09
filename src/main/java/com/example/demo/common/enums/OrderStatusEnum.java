@@ -3,7 +3,7 @@ package com.example.demo.common.enums;
 import lombok.Getter;
 
 @Getter
-public enum OrderStatusEnum {
+public enum OrderStatusEnum implements BaseEnum{
     NEW(0,"success"),
 
     FINISHEN(1,"fail") ;

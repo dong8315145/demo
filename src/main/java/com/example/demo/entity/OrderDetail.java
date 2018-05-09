@@ -1,8 +1,10 @@
 package com.example.demo.entity;
 
 import lombok.Data;
+import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.Entity;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.math.BigDecimal;
 import java.util.Date;
@@ -18,6 +20,7 @@ import java.util.Date;
 public class OrderDetail {
 
     @Id
+    @GenericGenerator(name="idGenerator", strategy="uuid")
     private String detailId;
 
     private String orderId;
