@@ -3,7 +3,8 @@ package com.example.demo.common.enums;
 import lombok.Getter;
 
 @Getter
-public enum PayStatusEnum {
+public enum PayStatusEnum implements BaseEnum {
+
     NOTPAYMENT(0, "未付款"),
     PAYMENT(1, "已付款"),
     APPLY(2, "申请退款"),

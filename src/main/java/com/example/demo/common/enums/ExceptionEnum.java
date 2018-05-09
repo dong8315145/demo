@@ -3,7 +3,7 @@ package com.example.demo.common.enums;
 import lombok.Getter;
 
 @Getter
-public enum ExceptionEnum {
+public enum ExceptionEnum implements BaseEnum {
     NOT(0, "商品不存在");
 
     private Integer code;
@@ -13,4 +13,5 @@ public enum ExceptionEnum {
         this.code = code;
         this.msg = msg;
     }
+
 }

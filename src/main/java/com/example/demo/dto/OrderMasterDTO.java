@@ -1,8 +1,10 @@
 package com.example.demo.dto;
 
+import com.example.demo.common.Untis.EnumsUnits;
 import com.example.demo.common.enums.OrderStatusEnum;
 import com.example.demo.common.enums.PayStatusEnum;
 import com.example.demo.entity.OrderDetail;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
 import org.hibernate.annotations.DynamicUpdate;
 
@@ -68,4 +70,13 @@ public class OrderMasterDTO {
 
     private List<OrderDetail> orderDetailList;
 
+    @JsonInclude
+    public OrderStatusEnum getOrderStatusEnum() {
+        return EnumsUnits.getNameByCode(orderStatus, OrderStatusEnum.class);
+    }
+
+    @JsonInclude
+    public PayStatusEnum getPayStatusEnum() {
+        return EnumsUnits.getNameByCode(orderStatus, PayStatusEnum.class);
+    }
 }
