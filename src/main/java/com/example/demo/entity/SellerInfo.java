@@ -14,13 +14,13 @@ import java.util.Date;
  **/
 @Entity
 @Data
-public class SellInfo {
+public class SellerInfo {
 
     @Id
-    private String Id;
-    private String userName;
-    private String passWord;
-    private String openId;
+    private String sellerId;
+    private String username;
+    private String password;
+    private String openid;
     private Date createTime;
     private Date updateTime;
 

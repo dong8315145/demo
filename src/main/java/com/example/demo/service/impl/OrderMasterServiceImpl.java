@@ -1,8 +1,8 @@
 package com.example.demo.service.impl;
 
-import com.example.demo.common.enums.ExceptionEnum;
 import com.example.demo.common.enums.PayStatusEnum;
-import com.example.demo.common.exception.BaseException;
+import com.example.demo.common.enums.ResultEnum;
+import com.example.demo.common.exception.ResultException;
 import com.example.demo.dto.OrderMasterDTO;
 import com.example.demo.entity.OrderDetail;
 import com.example.demo.entity.ProductInfo;
@@ -40,7 +40,7 @@ public class OrderMasterServiceImpl implements OrderMasterService {
         for (OrderDetail od : orderMasterDTO.getOrderDetailList()) {
             ProductInfo productInfo = productInfoService.findOne(od.getProductId());
             if (productInfo == null) {
-                new BaseException(ExceptionEnum.NOT);
+                new ResultException(ResultEnum.FAIL);
             }
             orderAmount = od.getProductPice()
                     .multiply(new BigDecimal(od.getProductQuantity())).add(orderAmount);
