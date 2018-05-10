@@ -1,4 +1,4 @@
-package com.example.demo.common.Untis;
+package com.example.demo.common.untis;
 
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.JsonSerializer;
