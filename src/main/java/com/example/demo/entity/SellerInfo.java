@@ -1,9 +1,11 @@
 package com.example.demo.entity;
 
 import lombok.Data;
+import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -14,7 +16,8 @@ import java.util.Date;
  **/
 @Entity
 @Data
-public class SellInfo {
+@DynamicUpdate
+public class SellerInfo implements Serializable {
 
     @Id
     private String Id;
