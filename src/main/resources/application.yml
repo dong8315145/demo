@@ -11,6 +11,11 @@ spring:
     open-in-view: true
   jackson:
     default-property-inclusion: non_null
+  mvc:
+    view:
+      prefix: /WEB-INF/jsp/
+      suffix: .jsp
 wechat:
   mpAppId: wxa85afca0e14f8d29
   mpAppSecret: 47fe2e42cf97ba2ef5060db7136362ef
+

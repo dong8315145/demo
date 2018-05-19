@@ -1,45 +1,44 @@
-
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="utf-8" />
-    <title>登录页面 - Bootstrap后台管理系统模版Ace下载</title>
-    <meta name="keywords" content="Bootstrap模版,Bootstrap模版下载,Bootstrap教程,Bootstrap中文" />
-    <meta name="description" content="站长素材提供Bootstrap模版,Bootstrap教程,Bootstrap中文翻译等相关Bootstrap插件下载" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="utf-8"/>
+<title>登录页面 - Bootstrap后台管理系统模版Ace下载</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-    <!-- basic styles -->
+<!-- basic styles -->
 
-    <link href="/assets/css/bootstrap.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="/assets/css/font-awesome.min.css" />
+<%@include file="head.jsp"%>
+<link href="assets/css/bootstrap.min.css" rel="stylesheet"/>
+<link rel="stylesheet" href="assets/css/font-awesome.min.css"/>
 
-    <!--[if IE 7]>
-    <link rel="stylesheet" href="/assets/css/font-awesome-ie7.min.css" />
-    <![endif]-->
+<!--[if IE 7]>
+<link rel="stylesheet" href="assets/css/font-awesome-ie7.min.css"/>
+<![endif]-->
 
-    <!-- page specific plugin styles -->
+<!-- page specific plugin styles -->
 
-    <!-- fonts -->
+<!-- fonts -->
 
-    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400,300" />
+<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400,300"/>
 
-    <!-- ace styles -->
+<!-- ace styles -->
 
-    <link rel="stylesheet" href="/assets/css/ace.min.css" />
-    <link rel="stylesheet" href="/assets/css/ace-rtl.min.css" />
+<link rel="stylesheet" href="assets/css/ace.min.css"/>
+<link rel="stylesheet" href="assets/css/ace-rtl.min.css"/>
 
-    <!--[if lte IE 8]>
-    <link rel="stylesheet" href="/assets/css/ace-ie.min.css" />
-    <![endif]-->
+<!--[if lte IE 8]>
+<link rel="stylesheet" href="assets/css/ace-ie.min.css"/>
+<![endif]-->
 
-    <!-- inline styles related to this page -->
+<!-- inline styles related to this page -->
 
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 
-    <!--[if lt IE 9]>
-    <script src="assets/js/html5shiv.js"></script>
-    <script src="assets/js/respond.min.js"></script>
-    <![endif]-->
+<!--[if lt IE 9]>
+<script src="assets/js/html5shiv.js"></script>
+<script src="assets/js/respond.min.js"></script>
+<![endif]-->
 </head>
 
 <body class="login-layout">
@@ -74,14 +73,16 @@
                                         <fieldset>
                                             <label class="block clearfix">
 														<span class="block input-icon input-icon-right">
-															<input type="text" class="form-control" placeholder="Username" />
+															<input type="text" class="form-control"
+                                                                   placeholder="Username"/>
 															<i class="icon-user"></i>
 														</span>
                                             </label>
 
                                             <label class="block clearfix">
 														<span class="block input-icon input-icon-right">
-															<input type="password" class="form-control" placeholder="Password" />
+															<input type="password" class="form-control"
+                                                                   placeholder="Password"/>
 															<i class="icon-lock"></i>
 														</span>
                                             </label>
@@ -90,11 +91,12 @@
 
                                             <div class="clearfix">
                                                 <label class="inline">
-                                                    <input type="checkbox" class="ace" />
+                                                    <input type="checkbox" class="ace"/>
                                                     <span class="lbl"> Remember Me</span>
                                                 </label>
 
-                                                <button type="button" class="width-35 pull-right btn btn-sm btn-primary">
+                                                <button type="button"
+                                                        class="width-35 pull-right btn btn-sm btn-primary">
                                                     <i class="icon-key"></i>
                                                     Login
                                                 </button>
@@ -125,14 +127,16 @@
 
                                 <div class="toolbar clearfix">
                                     <div>
-                                        <a href="#" onclick="show_box('forgot-box'); return false;" class="forgot-password-link">
+                                        <a href="#" onclick="show_box('forgot-box'); return false;"
+                                           class="forgot-password-link">
                                             <i class="icon-arrow-left"></i>
                                             I forgot my password
                                         </a>
                                     </div>
 
                                     <div>
-                                        <a href="#" onclick="show_box('signup-box'); return false;" class="user-signup-link">
+                                        <a href="#" onclick="show_box('signup-box'); return false;"
+                                           class="user-signup-link">
                                             I want to register
                                             <i class="icon-arrow-right"></i>
                                         </a>
@@ -158,7 +162,8 @@
                                         <fieldset>
                                             <label class="block clearfix">
 														<span class="block input-icon input-icon-right">
-															<input type="email" class="form-control" placeholder="Email" />
+															<input type="email" class="form-control"
+                                                                   placeholder="Email"/>
 															<i class="icon-envelope"></i>
 														</span>
                                             </label>
@@ -174,7 +179,8 @@
                                 </div><!-- /widget-main -->
 
                                 <div class="toolbar center">
-                                    <a href="#" onclick="show_box('login-box'); return false;" class="back-to-login-link">
+                                    <a href="#" onclick="show_box('login-box'); return false;"
+                                       class="back-to-login-link">
                                         Back to login
                                         <i class="icon-arrow-right"></i>
                                     </a>
@@ -197,34 +203,38 @@
                                         <fieldset>
                                             <label class="block clearfix">
 														<span class="block input-icon input-icon-right">
-															<input type="email" class="form-control" placeholder="Email" />
+															<input type="email" class="form-control"
+                                                                   placeholder="Email"/>
 															<i class="icon-envelope"></i>
 														</span>
                                             </label>
 
                                             <label class="block clearfix">
 														<span class="block input-icon input-icon-right">
-															<input type="text" class="form-control" placeholder="Username" />
+															<input type="text" class="form-control"
+                                                                   placeholder="Username"/>
 															<i class="icon-user"></i>
 														</span>
                                             </label>
 
                                             <label class="block clearfix">
 														<span class="block input-icon input-icon-right">
-															<input type="password" class="form-control" placeholder="Password" />
+															<input type="password" class="form-control"
+                                                                   placeholder="Password"/>
 															<i class="icon-lock"></i>
 														</span>
                                             </label>
 
                                             <label class="block clearfix">
 														<span class="block input-icon input-icon-right">
-															<input type="password" class="form-control" placeholder="Repeat password" />
+															<input type="password" class="form-control"
+                                                                   placeholder="Repeat password"/>
 															<i class="icon-retweet"></i>
 														</span>
                                             </label>
 
                                             <label class="block">
-                                                <input type="checkbox" class="ace" />
+                                                <input type="checkbox" class="ace"/>
                                                 <span class="lbl">
 															I accept the
 															<a href="#">User Agreement</a>
@@ -239,7 +249,8 @@
                                                     Reset
                                                 </button>
 
-                                                <button type="button" class="width-65 pull-right btn btn-sm btn-success">
+                                                <button type="button"
+                                                        class="width-65 pull-right btn btn-sm btn-success">
                                                     Register
                                                     <i class="icon-arrow-right icon-on-right"></i>
                                                 </button>
@@ -249,7 +260,8 @@
                                 </div>
 
                                 <div class="toolbar center">
-                                    <a href="#" onclick="show_box('login-box'); return false;" class="back-to-login-link">
+                                    <a href="#" onclick="show_box('login-box'); return false;"
+                                       class="back-to-login-link">
                                         <i class="icon-arrow-left"></i>
                                         Back to login
                                     </a>
@@ -278,19 +290,19 @@
 <!--[if !IE]> -->
 
 <script type="text/javascript">
-    window.jQuery || document.write("<script src='assets/js/jquery-2.0.3.min.js'>"+"<"+"/script>");
+    window.jQuery || document.write("<script src='assets/js/jquery-2.0.3.min.js'>" + "<" + "/script>");
 </script>
 
 <!-- <![endif]-->
 
 <!--[if IE]>
 <script type="text/javascript">
-    window.jQuery || document.write("<script src='assets/js/jquery-1.10.2.min.js'>"+"<"+"/script>");
+    window.jQuery || document.write("<script src='assets/js/jquery-1.10.2.min.js'>" + "<" + "/script>");
 </script>
 <![endif]-->
 
 <script type="text/javascript">
-    if("ontouchend" in document) document.write("<script src='assets/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
+    if ("ontouchend" in document) document.write("<script src='assets/js/jquery.mobile.custom.min.js'>" + "<" + "/script>");
 </script>
 
 <!-- inline scripts related to this page -->
@@ -298,9 +310,11 @@
 <script type="text/javascript">
     function show_box(id) {
         jQuery('.widget-box.visible').removeClass('visible');
-        jQuery('#'+id).addClass('visible');
+        jQuery('#' + id).addClass('visible');
     }
 </script>
-<div style="display:none"><script src='/assets/js/stat.js' language='JavaScript' charset='gb2312'></script></div>
+<div style="display:none">
+    <script src='http://v7.cnzz.com/stat.php?id=155540&web_id=155540' language='JavaScript' charset='gb2312'></script>
+</div>
 </body>
 </html>

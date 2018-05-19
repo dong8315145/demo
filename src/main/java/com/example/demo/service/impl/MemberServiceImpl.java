@@ -7,6 +7,7 @@ import com.example.demo.entity.Member;
 import com.example.demo.repository.MemberRepository;
 import com.example.demo.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
@@ -15,13 +16,14 @@ import org.springframework.web.servlet.ModelAndView;
  * @author: Terdy.Zheng
  * @create: 2018-05-12 14:42
  **/
+@Service
 public class MemberServiceImpl implements MemberService {
 
     @Autowired
     private MemberRepository memberRepository;
 
     public ModelAndView login(MemberDTO memberDTO) {
-        Member member = memberRepository.findbyNameAndPassword(memberDTO.getName(), memberDTO.getPassword());
+        Member member = memberRepository.findMemberByNameAndPassword(memberDTO.getName(), memberDTO.getPassword());
         if (member != null) {
         /*
         TODO redis set map,

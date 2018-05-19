@@ -1,4 +1,8 @@
 package com.example.demo.service;
+
+import com.example.demo.dto.MemberDTO;
+import org.springframework.web.servlet.ModelAndView;
+
 /**
  * @program: demo
  * @description:
@@ -7,5 +11,6 @@ package com.example.demo.service;
  **/
 public interface MemberService {
 
+     ModelAndView login(MemberDTO memberDTO);
 
 }

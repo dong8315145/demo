@@ -1,9 +1,10 @@
 package com.example.demo.entity;
 
 import lombok.Data;
-import org.hibernate.annotations.DynamicUpdate;
+import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -15,9 +16,10 @@ import java.util.Date;
  **/
 @Entity
 @Data
-@DynamicUpdate
 public class Member  implements Serializable {
 
+    @Id
+    @GenericGenerator(name="idGenerator", strategy="uuid")
     private String id;
 
     private String name;

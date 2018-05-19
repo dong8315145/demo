@@ -7,6 +7,6 @@ import sun.security.util.Password;
 
 public interface MemberRepository extends JpaRepository<Member,String> {
 
-    Member findbyNameAndPassword(String name ,String password);
+    Member findMemberByNameAndPassword(String name ,String password);
 
 }
