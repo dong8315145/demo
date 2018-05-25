@@ -1,6 +1,7 @@
 package com.example.demo.service.impl;
 
 import com.example.demo.dto.MemberDTO;
+import com.example.demo.entity.Member;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,11 +17,17 @@ public class MemberServiceImplTest {
     private MemberServiceImpl memberService;
 
     @Test
-    public void login(){
-        MemberDTO memberDTO=new MemberDTO();
+    public void login() {
+        MemberDTO memberDTO = new MemberDTO();
         memberDTO.setName("admin");
         memberDTO.setPassword("admin");
-      memberService.login(memberDTO);
+        memberService.login(memberDTO);
     }
 
+
+    @Test
+    public void findByID() {
+        Member member = memberService.findOne("1");
+        System.out.println(member.toString());
+    }
 }

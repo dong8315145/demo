@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
 import com.example.demo.dto.MemberDTO;
+import com.example.demo.entity.Member;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
@@ -11,6 +12,13 @@ import org.springframework.web.servlet.ModelAndView;
  **/
 public interface MemberService {
 
-     ModelAndView login(MemberDTO memberDTO);
+     MemberDTO login(MemberDTO memberDTO);
+
+     Member findOne(String id);
+
+     MemberDTO modify(Member member);
+
+
+
 
 }

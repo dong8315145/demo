@@ -10,7 +10,6 @@
 <link rel="stylesheet" href="/assets/css/ace.min.css"/>
 <link rel="stylesheet" href="/assets/css/ace-rtl.min.css"/>
 <link rel="stylesheet" href="/assets/css/ace-skins.min.css"/>
-
 <!-- jquery plugin styles -->
 <!--JsTree Style-->
 <link href="https://cdn.bootcss.com/jstree/3.3.4/themes/default/style.min.css" rel="stylesheet">
