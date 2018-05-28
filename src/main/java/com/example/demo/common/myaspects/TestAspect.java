@@ -22,7 +22,7 @@ import javax.servlet.http.HttpServletRequest;
 @Component
 public class TestAspect {
 
-    @Pointcut("execution(public * com.example.demo.controller.*.*(..))"+"&& !execution(public * com.example.demo.controller.WelcomeController(..))")
+    @Pointcut("execution(public * com.example.demo.controller.*.*(..))" + "&& !execution(public * com.example.demo.controller.WelcomeController.*.*(..))")
     public void verify() {
 
 
@@ -30,11 +30,11 @@ public class TestAspect {
 
     @Before("verify()")
     public void doverify() {
-        ServletRequestAttributes attributes=(ServletRequestAttributes)RequestContextHolder.getRequestAttributes();
-        HttpServletRequest request=attributes.getRequest();
+        ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
+        HttpServletRequest request = attributes.getRequest();
         //查询cookie
-        Cookie cookie=CookieUtil.get(request,CookieConstant.TOKEN);
-        if(cookie==null){
+        Cookie cookie = CookieUtil.get(request, CookieConstant.TOKEN);
+        if (cookie == null) {
 
         }
         //去redis里查

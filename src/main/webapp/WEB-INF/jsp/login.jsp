@@ -8,7 +8,7 @@
 
 <!-- basic styles -->
 
-<%@include file="head.jsp"%>
+<%@include file="head.jsp" %>
 <link href="/assets/css/bootstrap.min.css" rel="stylesheet"/>
 <link rel="stylesheet" href="/assets/css/font-awesome.min.css"/>
 
@@ -96,7 +96,7 @@
                                                 </label>
 
                                                 <button type="button"
-                                                        class="width-35 pull-right btn btn-sm btn-primary">
+                                                        class="width-35 pull-right btn btn-sm btn-primary" onclick="login()">
                                                     <i class="icon-key"></i>
                                                     Login
                                                 </button>
@@ -285,7 +285,7 @@
 <!--[if !IE]> -->
 
 <script type="text/javascript">
-    window.jQuery || document.write("<script src='/assets/js/jquery-2.0.3.min.js'>" + "<" + "/script>");
+    window.jQuery || document.write("<script src='/assets/js/jquery-2.1.4.min.js'>" + "<" + "/script>");
 </script>
 
 <!-- <![endif]-->
@@ -306,6 +306,24 @@
     function show_box(id) {
         jQuery('.widget-box.visible').removeClass('visible');
         jQuery('#' + id).addClass('visible');
+    }
+</script>
+<script>
+    function login() {
+        $.ajax({
+            url: "/common/login",
+            dataType:JSON,
+            data:{
+                name:name,
+                password:password
+            },
+            success:function (data) {
+                
+            },
+            err:function (data) {
+                
+            }
+        });
     }
 </script>
 <div style="display:none">
