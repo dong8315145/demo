@@ -1,5 +1,6 @@
 package com.example.demo.service;
 
+import com.example.demo.View.BaseView.ResultVO;
 import com.example.demo.dao.Member;
 import com.example.demo.dto.MemberDTO;
 
@@ -13,11 +14,11 @@ public interface MemberService {
 
      MemberDTO login(MemberDTO memberDTO);
 
-     Member findOne(String id);
+     ResultVO getMemberById(String id);
 
-     MemberDTO modify(Member member);
+     ResultVO modify(MemberDTO memberDTO);
 
-
+     ResultVO remove(MemberDTO memberDTO)
 
 
 }
