@@ -6,6 +6,7 @@ spring:
     username: root
     password: root
     url: jdbc:mysql://localhost:3306/demo?characterEncoding=UTF-8&useSSL=false
+    type:
   jpa:
     show-sql: true
     open-in-view: true
@@ -27,12 +28,11 @@ web:
   upload-path: "D:/develep_uploadfile/"
 
 mybatis:
-    type-aliases-package: tk.mybatis.springboot.model
+    type-aliases-package: com.example.demo.dao
     mapper-locations: classpath:mapper/*.xml
 
 mapper:
-    mappers:
-        - tk.mybatis.springboot.util.MyMapper
+    mappers: tk.mybatis.spring.mapper.MapperScannerConfigurer
     not-empty: false
     identity: MYSQL
 

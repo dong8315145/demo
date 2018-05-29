@@ -1,6 +1,6 @@
 package com.example.demo.repository;
 
-import com.example.demo.entity.ProductCategory;
+import com.example.demo.dao.ProductCategory;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;

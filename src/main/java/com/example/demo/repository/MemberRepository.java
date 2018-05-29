@@ -1,11 +1,14 @@
 package com.example.demo.repository;
 
-import com.example.demo.entity.Member;
-import com.example.demo.entity.OrderDetail;
+import com.example.demo.dao.Member;
+import com.example.demo.dao.ProductCategory;
 import org.springframework.data.jpa.repository.JpaRepository;
-import sun.security.util.Password;
+import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 
-public interface MemberRepository extends JpaRepository<Member,String> {
+import java.io.Serializable;
+
+public interface MemberRepository extends Serializable,JpaRepository<Member,String>,
+        JpaSpecificationExecutor<Member> {
 
     Member findMemberByNameAndPassword(String name ,String password);
 

@@ -3,7 +3,7 @@ package com.example.demo.service.impl;
 import com.example.demo.common.enums.ResultEnum;
 import com.example.demo.common.exception.ResultException;
 import com.example.demo.dto.MemberDTO;
-import com.example.demo.entity.Member;
+import com.example.demo.dao.Member;
 import com.example.demo.repository.MemberRepository;
 import com.example.demo.service.MemberService;
 import lombok.extern.slf4j.Slf4j;

@@ -1,8 +1,7 @@
 package com.example.demo.service;
 
+import com.example.demo.dao.Member;
 import com.example.demo.dto.MemberDTO;
-import com.example.demo.entity.Member;
-import org.springframework.web.servlet.ModelAndView;
 
 /**
  * @program: demo
