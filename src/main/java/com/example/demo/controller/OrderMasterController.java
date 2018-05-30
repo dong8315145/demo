@@ -1,9 +1,8 @@
 package com.example.demo.controller;
 
-import com.example.demo.View.BaseView.BaseVO;
+
+import com.example.demo.View.BaseView.ResultVO;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.Mapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class OrderMasterController {
 
     @PostMapping("/list")
-    public BaseVO list() {
+    public ResultVO list() {
         return null;
     }
 }

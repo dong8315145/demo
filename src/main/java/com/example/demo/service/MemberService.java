@@ -1,8 +1,11 @@
 package com.example.demo.service;
 
 import com.example.demo.View.BaseView.ResultVO;
+import com.example.demo.View.MemberView;
 import com.example.demo.dao.Member;
 import com.example.demo.dto.MemberDTO;
+
+import java.util.List;
 
 /**
  * @program: demo
@@ -12,13 +15,17 @@ import com.example.demo.dto.MemberDTO;
  **/
 public interface MemberService {
 
+     List<Member> list(MemberView memberView);
+
      MemberDTO login(MemberDTO memberDTO);
 
-     ResultVO getMemberById(String id);
+     Boolean add(Member member);
 
-     ResultVO modify(MemberDTO memberDTO);
+     Member  getMemberById(String id);
 
-     ResultVO remove(MemberDTO memberDTO)
+     MemberDTO modify(MemberDTO memberDTO);
+
+     Boolean remove(MemberDTO memberDTO);
 
 
 }

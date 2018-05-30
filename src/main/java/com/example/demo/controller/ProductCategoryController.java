@@ -1,9 +1,9 @@
 package com.example.demo.controller;
 
-import com.example.demo.View.BaseView.BaseVO;
 import com.example.demo.View.BaseView.ResultVO;
 import com.example.demo.View.ProductCategoryVO;
 import com.example.demo.View.ProductInfoVO;
+import com.example.demo.common.enums.ResultEnum;
 import com.example.demo.dao.ProductCategory;
 import com.example.demo.entity.ProductInfo;
 import com.example.demo.service.ProductCategoryService;
@@ -29,7 +29,7 @@ public class ProductCategoryController {
 
 
     @PostMapping("/list")
-    public BaseVO list() {
+    public ResultVO list() {
         List<ProductInfo> productInfoList = productInfoService.findUpAll();
         List<Integer> productcategoryTypeList =
                 productInfoList.stream().distinct().map(e -> e.getCategoryType()).collect(Collectors.toList());
@@ -50,7 +50,7 @@ public class ProductCategoryController {
             }
             productCategoryVO.setProductInfoVOList(productInfoVOList);
         }
-        return ResultVO.success(productCategoryVOList);
+        return new ResultVO(ResultEnum.SUCCESS,productCategoryVOList);
     }
 
 }

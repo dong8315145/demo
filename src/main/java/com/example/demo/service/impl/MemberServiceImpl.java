@@ -1,22 +1,25 @@
 package com.example.demo.service.impl;
 
-import com.example.demo.View.BaseView.ResultVO;
+import com.example.demo.View.MemberView;
 import com.example.demo.common.enums.ResultEnum;
 import com.example.demo.common.exception.ResultException;
 import com.example.demo.dao.Member;
+import com.example.demo.dao.mapper.MemberMapper;
 import com.example.demo.dto.MemberDTO;
+import com.example.demo.redis.RedisManager;
 import com.example.demo.repository.MemberRepository;
 import com.example.demo.service.MemberService;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 /**
  * @program: demo
@@ -31,11 +34,35 @@ public class MemberServiceImpl implements MemberService {
     private static final String REDIS_PREFIX = "demo:member:";
     private static final String ID = REDIS_PREFIX + "id:";
     private static final String ALL = REDIS_PREFIX + "all:";
+
     @Autowired
     private RedisManager<String, Member> redisManager;
 
     @Autowired
     private MemberRepository memberRepository;
+
+    @Autowired
+    private MemberMapper memberMapper;
+
+    @Transactional(propagation = Propagation.REQUIRED)
+    @Override
+    public List<Member> list(MemberView memberView) {
+        PageHelper.startPage(memberView.getPageNum(), memberView.getPageSize(), memberView.getOrderByKey());
+        HashMap<String,String > parameter=new HashMap<>();
+        if(!StringUtils.isEmpty(memberView.getName())){
+            parameter.put("name",memberView.getName());
+        }
+        List<Member> list = memberMapper.selectByParameter(parameter);
+        PageInfo<Member> pageInfo = new PageInfo<Member>(list);
+        return list;
+    }
+
+    @Transactional(propagation = Propagation.REQUIRED)
+    @Override
+    public Boolean add(Member member) {
+        memberRepository.save(member);
+        return true;
+    }
 
     public Set<Member> allMember() {
         // TODO Auto-generated method stub
@@ -44,7 +71,7 @@ public class MemberServiceImpl implements MemberService {
             List<Member> townList = memberRepository.findAll();
             memberSet = new HashSet<>(townList.size() * 2);
             for (Member member : townList) {
-                areaSet.add(member);
+                memberSet.add(member);
                 redisManager.update(ID + member.getId(), member);
                 redisManager.setAdd(ALL, member);
             }
@@ -69,46 +96,43 @@ public class MemberServiceImpl implements MemberService {
 
     @Transactional(propagation = Propagation.REQUIRED)
     @Override
-    public ResultVO getMemberById(String id) {
-        Member member=findIt(id);
-        if(member==null){
-            return new ResultVO(ResultEnum.FAIL,"用户无效");
-        }
-         return new ResultVO(ResultEnum.SUCCESS,member);
+    public Member getMemberById(String id) {
+        return findIt(id);
     }
 
     @Transactional(propagation = Propagation.REQUIRED)
     @Override
-    public ResultVO modify(MemberDTO memberDTO) {
-       Member member=findIt(memberDTO.getId());
-       BeanUtils.copyProperties(memberDTO,member);
-       memberRepository.saveAndFlush(member);
-       redisManager.update(ID+member.getId(),member);
-       return new ResultVO(ResultEnum.SUCCESS,memberDTO);
+    public MemberDTO modify(MemberDTO memberDTO) {
+        Member member = findIt(memberDTO.getId());
+        BeanUtils.copyProperties(memberDTO, member);
+        memberRepository.saveAndFlush(member);
+        redisManager.update(ID + member.getId(), member);
+        return memberDTO;
     }
 
     @Transactional(propagation = Propagation.REQUIRED)
     @Override
-    public ResultVO remove(MemberDTO memberDTO) {
-        Member member=findIt(memberDTO.getId());
+    public Boolean remove(MemberDTO memberDTO) {
+        String id = memberDTO.getId();
+        Member member = findIt(id);
         if (null == member) {
-            member= optionalMember=memberRepository.findById(id).get();
+            member = memberRepository.findById(id).get();
             if (null == member) {
-              return new ResultVO(ResultEnum.FAIL,"无效用户");
+                return false;
             }
         }
         //TODO 逻辑删除改关键字
         memberRepository.saveAndFlush(member);
-        redisManager.update(ID+member.getId(),member);
-        return new ResultVO(ResultEnum.SUCCESS);
+        redisManager.update(ID + member.getId(), member);
+        return true;
     }
 
-    private Member findIt(String id){
+    private Member findIt(String id) {
         Member member = (Member) redisManager.get(ID + id);
         if (null == member) {
-            member= optionalMember=memberRepository.findById(id).get();
+            member = memberRepository.findById(id).get();
             if (null != member) {
-                redisManager.add(ID + id, area);
+                redisManager.add(ID + id, member);
             }
         }
         return member;
