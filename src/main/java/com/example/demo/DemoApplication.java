@@ -5,10 +5,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-@MapperScan(basePackages = "com.example.demo.mapper")
+@MapperScan(basePackages = "com.example.demo.dao.mapper")
 public class DemoApplication {
-
-    //dao上传不了
     public static void main(String[] args) {
         SpringApplication.run(DemoApplication.class, args);
     }

@@ -62,6 +62,7 @@ public class MemberServiceImplTest {
         MemberView memberVive = new MemberView();
         memberVive.setPageNum(1);
         memberVive.setPageSize(1);
+        memberVive.setName("a");
         List<Member> list=memberService.list(memberVive);
         System.out.println("list:"+list.size());
     }

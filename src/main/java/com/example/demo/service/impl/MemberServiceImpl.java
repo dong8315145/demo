@@ -48,11 +48,9 @@ public class MemberServiceImpl implements MemberService {
     @Override
     public List<Member> list(MemberView memberView) {
         PageHelper.startPage(memberView.getPageNum(), memberView.getPageSize(), memberView.getOrderByKey());
-        HashMap<String,String > parameter=new HashMap<>();
-        if(!StringUtils.isEmpty(memberView.getName())){
-            parameter.put("name",memberView.getName());
-        }
-        List<Member> list = memberMapper.selectByParameter(parameter);
+        Map<String, Object> params = new HashMap<>();
+        params.put("name", memberView.getName());
+        List<Member> list = memberMapper.selectByParams(params);
         PageInfo<Member> pageInfo = new PageInfo<Member>(list);
         return list;
     }
