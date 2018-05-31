@@ -2,6 +2,7 @@ package com.example.demo.service.impl;
 
 import com.example.demo.View.MemberView;
 import com.example.demo.common.enums.ResultEnum;
+import com.example.demo.common.exception.DaoException;
 import com.example.demo.common.exception.ResultException;
 import com.example.demo.dao.Member;
 import com.example.demo.dao.mapper.MemberMapper;
@@ -46,11 +47,13 @@ public class MemberServiceImpl implements MemberService {
 
     @Transactional(propagation = Propagation.REQUIRED)
     @Override
-    public List<Member> list(MemberView memberView) {
-        PageHelper.startPage(memberView.getPageNum(), memberView.getPageSize(), memberView.getOrderByKey());
-        Map<String, Object> params = new HashMap<>();
+    public List<Member> list(MemberView memberView) throws DaoException {
+         PageHelper.startPage(memberView.getPageNum(), memberView.getPageSize(), memberView.getOrderByKey());
+        Map<String, Object> params = new HashMap<String, Object>();
         params.put("name", memberView.getName());
-        List<Member> list = memberMapper.selectByParams(params);
+        System.out.println("name:" + params.get("name"));
+        List<Member> list = new ArrayList<>();
+        list  = memberMapper.selectByParams(params);
         PageInfo<Member> pageInfo = new PageInfo<Member>(list);
         return list;
     }
@@ -62,7 +65,7 @@ public class MemberServiceImpl implements MemberService {
         return true;
     }
 
-    public Set<Member> allMember() {
+    public Set<Member> allMember() throws DaoException {
         // TODO Auto-generated method stub
         Set<Member> memberSet = redisManager.setMembers(ALL);
         if (null == memberSet || memberSet.isEmpty()) {
@@ -79,7 +82,7 @@ public class MemberServiceImpl implements MemberService {
 
     @Transactional(propagation = Propagation.REQUIRED)
     @Override
-    public MemberDTO login(MemberDTO memberDTO) {
+    public MemberDTO login(MemberDTO memberDTO) throws DaoException {
         Member member = memberRepository.findMemberByNameAndPassword(memberDTO.getName(), memberDTO.getPassword());
         if (member != null) {
         /*
@@ -94,13 +97,13 @@ public class MemberServiceImpl implements MemberService {
 
     @Transactional(propagation = Propagation.REQUIRED)
     @Override
-    public Member getMemberById(String id) {
+    public Member getMemberById(String id) throws DaoException {
         return findIt(id);
     }
 
     @Transactional(propagation = Propagation.REQUIRED)
     @Override
-    public MemberDTO modify(MemberDTO memberDTO) {
+    public MemberDTO modify(MemberDTO memberDTO) throws DaoException {
         Member member = findIt(memberDTO.getId());
         BeanUtils.copyProperties(memberDTO, member);
         memberRepository.saveAndFlush(member);
@@ -110,7 +113,7 @@ public class MemberServiceImpl implements MemberService {
 
     @Transactional(propagation = Propagation.REQUIRED)
     @Override
-    public Boolean remove(MemberDTO memberDTO) {
+    public Boolean remove(MemberDTO memberDTO) throws DaoException {
         String id = memberDTO.getId();
         Member member = findIt(id);
         if (null == member) {
@@ -125,7 +128,7 @@ public class MemberServiceImpl implements MemberService {
         return true;
     }
 
-    private Member findIt(String id) {
+    private Member findIt(String id) throws DaoException {
         Member member = (Member) redisManager.get(ID + id);
         if (null == member) {
             member = memberRepository.findById(id).get();

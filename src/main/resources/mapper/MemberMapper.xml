@@ -18,7 +18,7 @@
     </if>
   </sql>
 
-  <select id="selectByParams" parameterType="java.util.HashMap" resultMap="BaseResultMap">
+  <select id="selectByParams" parameterType="java.util.Map" resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List" />
     from member
