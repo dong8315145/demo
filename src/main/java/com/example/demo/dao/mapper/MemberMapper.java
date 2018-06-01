@@ -1,10 +1,10 @@
 package com.example.demo.dao.mapper;
 
+import com.example.demo.common.exception.DaoException;
 import com.example.demo.dao.Member;
-import io.lettuce.core.dynamic.annotation.Param;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Component;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -16,17 +16,17 @@ public interface MemberMapper {
      * @param params
      * @return
      */
-    List<Member> selectByParams(@Param("params") Map<String, Object> params);
+    <ModelType> List<ModelType> selectByParams(@Param("params") Map<String, Object> params) throws DaoException;
 
-    int deleteByPrimaryKey(String id);
+    int deleteByPrimaryKey(String id) throws DaoException;
 
-    int insert(Member record);
+    int insert(Member record) throws DaoException;
 
-    int insertSelective(Member record);
+    int insertSelective(Member record) throws DaoException;
 
-    Member selectByPrimaryKey(String id);
+    Member selectByPrimaryKey(String id) throws DaoException;
 
-    int updateByPrimaryKeySelective(Member record);
+    int updateByPrimaryKeySelective(Member record) throws DaoException;
 
-    int updateByPrimaryKey(Member record);
+    int updateByPrimaryKey(Member record) throws DaoException;
 }

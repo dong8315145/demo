@@ -1,4 +1,4 @@
-package com.example.demo.common.consant;
+package com.example.demo.common.constant;
 
 public class CookieConstant {
 

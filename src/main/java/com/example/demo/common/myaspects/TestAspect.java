@@ -1,6 +1,6 @@
 package com.example.demo.common.myaspects;
 
-import com.example.demo.common.consant.CookieConstant;
+import com.example.demo.common.constant.CookieConstant;
 import com.example.demo.common.units.CookieUtil;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;

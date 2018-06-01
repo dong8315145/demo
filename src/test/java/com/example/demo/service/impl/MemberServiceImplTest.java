@@ -1,6 +1,7 @@
 package com.example.demo.service.impl;
 
 import com.example.demo.View.MemberView;
+import com.example.demo.common.exception.DaoException;
 import com.example.demo.dao.Member;
 import com.example.demo.dao.ProductCategory;
 import com.example.demo.dao.mapper.MemberMapper;
@@ -36,7 +37,7 @@ public class MemberServiceImplTest {
     private MemberMapper memberMapper;
 
     @Test
-    public void login() {
+    public void login() throws DaoException  {
         MemberDTO memberDTO = new MemberDTO();
         memberDTO.setName("admin");
         memberDTO.setPassword("admin");
@@ -44,26 +45,29 @@ public class MemberServiceImplTest {
     }
 
     @Test
-    public void findByID() {
+    public void findByID()  throws DaoException {
         Member member = memberService.getMemberById("1");
         System.out.println("name:" + member.getName());
     }
 
     @Test
-    public void mapperTest() {
-        Member member = memberMapper.selectByPrimaryKey("1");
+    public void mapperTest() throws DaoException  {
+        Member member = memberService.getMemberById("1");
         System.out.println("name:" + member.getName());
         ProductCategory productCategory = productCategoryRepository.findById(1).get();
         System.out.println("productCategoryName:" + productCategory.getCategoryName());
     }
 
     @Test
-    public void listTest() {
+    public void listTest() throws DaoException {
         MemberView memberVive = new MemberView();
-        memberVive.setPageNum(1);
+        memberVive.setPageNum(0);
         memberVive.setPageSize(1);
-        memberVive.setName("a");
+        //memberVive.setName("a");
         List<Member> list=memberService.list(memberVive);
+        for(Member member:list){
+            System.out.println(member.getName());
+        }
         System.out.println("list:"+list.size());
     }
 }

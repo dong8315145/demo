@@ -10,6 +10,8 @@ public class PageView {
     private String sort;
 
     public PageView() {
+        this.orderBy="create_time";
+        this.sort="asc";
     }
 
     public PageView(int pageNum, int pageSize, String orderBy, String sort) {

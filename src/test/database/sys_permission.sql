@@ -1,0 +1,14 @@
+INSERT INTO `sys_permission` VALUES ('P000000001', '新增', 'D');
+INSERT INTO `sys_permission` VALUES ('P000000002', '修改', 'D');
+INSERT INTO `sys_permission` VALUES ('P000000003', '删除', 'D');
+INSERT INTO `sys_permission` VALUES ('P000000004', '有效', 'D');
+INSERT INTO `sys_permission` VALUES ('P000000005', '无效', 'D');
+INSERT INTO `sys_permission` VALUES ('P000000006', '预览', 'D');
+INSERT INTO `sys_permission` VALUES ('P000000007', '新增', 'N');
+INSERT INTO `sys_permission` VALUES ('P000000008', '修改', 'N');
+INSERT INTO `sys_permission` VALUES ('P000000009', '删除', 'N');
+INSERT INTO `sys_permission` VALUES ('P000000010', '有效', 'N');
+INSERT INTO `sys_permission` VALUES ('P000000011', '无效', 'N');
+INSERT INTO `sys_permission` VALUES ('P000000012', '预览', 'N');
+INSERT INTO `sys_permission` VALUES ('P000000013', '授权', 'D');
+INSERT INTO `sys_permission` VALUES ('P000000014', '菜单', 'M');
