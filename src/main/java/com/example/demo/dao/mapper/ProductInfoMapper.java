@@ -1,9 +1,7 @@
 package com.example.demo.dao.mapper;
 
 import com.example.demo.dao.ProductInfo;
-import org.springframework.stereotype.Component;
 
-@Component
 public interface ProductInfoMapper {
     int deleteByPrimaryKey(String productId);
 

@@ -2,8 +2,10 @@ package com.example.demo.controller;
 
 import com.example.demo.View.BaseView.ResultVO;
 import com.example.demo.View.MemberView;
+import com.example.demo.common.constant.PermissionConstants;
 import com.example.demo.common.enums.ResultEnum;
 import com.example.demo.common.exception.DaoException;
+import com.example.demo.common.permissionfilter.Permission;
 import com.example.demo.dao.Member;
 import com.example.demo.dto.MemberDTO;
 import com.example.demo.service.impl.MemberServiceImpl;
@@ -45,6 +47,7 @@ public class MemberController {
     }
 
     @PostMapping("/remove")
+   // @Permission(PermissionConstants.DATA_REMOVE)
     public ResultVO remove(MemberDTO memberDTO) throws DaoException{
         if (memberService.remove(memberDTO)) {
             return new ResultVO(ResultEnum.SUCCESS, memberDTO);

@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
 <generatorConfiguration>
     <classPathEntry
-            location="C:\Users\wehavert\.m2\repository\mysql\mysql-connector-java\5.1.46\mysql-connector-java-5.1.46.jar"/>
+            location="C:\Users\Administrator\.m2\repository\mysql\mysql-connector-java\5.1.46\mysql-connector-java-5.1.46.jar"/>
     <context id="MyBatis"
              targetRuntime="MyBatis3">
         <property name="autoDelimitKeywords" value="false"/>
@@ -23,18 +23,18 @@
             <property name="forceBigDecimals" value="false"/>
         </javaTypeResolver>
         <javaModelGenerator targetPackage="com.example.demo.dao"
-                            targetProject="D:\IdeaProjects\demo\src\main\java\com\example\demo\dao">
+                            targetProject="D:\ideaworkspace\demo\src\main\java\com\example\demo\dao">
         <property name="enableSubPackages"
                   value="false"/>
         <property name="trimStrings" value="true"/>
     </javaModelGenerator>
     <sqlMapGenerator targetPackage="/mapper"
-                     targetProject="D:\IdeaProjects\demo\src\main\resources">
+                     targetProject="D:\ideaworkspace\demo\src\main\resources">
         <property name="enableSubPackages" value="false"/>
     </sqlMapGenerator>
     <javaClientGenerator type="XMLMAPPER"
                          targetPackage="com.example.demo.dao.mapper"
-                         targetProject="D:\IdeaProjects\demo\src\main\java\com\example\demo\dao">
+                         targetProject="D:\ideaworkspace\demo\src\main\java\com\example\demo\dao">
         <property name="enableSubPackages"
                   value="false"/>
     </javaClientGenerator>

@@ -25,24 +25,15 @@ public class PermissionConstants {
      */
     public static final String DATA_INVALID = "P000000005";
     /**
-     * 数据授权权限
+     * 数据预览权限
      */
 
     public static final String DATA_PREVIEW = "P000000006";
 
-    public static final String NODE_ADD = "P000000007";
-
-    public static final String NODE_MODIFY = "P000000008";
-
-    public static final String NODE_REMOVE = "P000000009";
-
-    public static final String NODE_VALID = "P000000010";
-
-    public static final String NODE_INVALID = "P000000011";
-
-    public static final String NODE_PREVIEW = "P000000012";
-
-    public static final String DATA_PERMISSION = "P000000013";
+    /**
+     * 数据授权权限
+     */
+    public static final String DATA_PERMISSION = "P00000007";
 
 
 }

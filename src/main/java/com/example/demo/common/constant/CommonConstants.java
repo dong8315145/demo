@@ -1,0 +1,21 @@
+package com.example.demo.common.constant;
+
+/**
+ * @program: demo
+ * @description:
+ * @author: Terdy.Zheng
+ * @create: 2018-06-01 13:37
+ **/
+public class CommonConstants {
+
+    public static final String VALID="1";
+
+    public static final String INVALID="0";
+
+    public static final String LOGIN_USER="login_user";
+
+    public static final String PAGE_DATE_ATTRIBUTE = "page";
+
+    public static final String ERROR_VIEW_NAME = "/error";
+
+}

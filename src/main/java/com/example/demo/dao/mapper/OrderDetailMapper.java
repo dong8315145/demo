@@ -1,9 +1,7 @@
 package com.example.demo.dao.mapper;
 
 import com.example.demo.dao.OrderDetail;
-import org.springframework.stereotype.Component;
 
-@Component
 public interface OrderDetailMapper {
     int deleteByPrimaryKey(String detailId);
 
