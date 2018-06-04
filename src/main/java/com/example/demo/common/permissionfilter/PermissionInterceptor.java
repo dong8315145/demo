@@ -42,8 +42,6 @@ public class PermissionInterceptor extends HandlerInterceptorAdapter {
 	@Resource
 	private RoleMenuPermissionMapper roleMenuPermissionMapper;
 
-	@Resource
-	protected Message message;
 
 	private String[] menuIdMappings;
 

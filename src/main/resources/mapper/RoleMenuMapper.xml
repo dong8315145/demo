@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.dao.mapper.RoleMenuMapper">
+    <resultMap id="BaseResultMap" type="com.example.demo.dao.RoleMenu">
+        <result column="role_id" jdbcType="VARCHAR" property="roleId"/>
+        <result column="menu_id" jdbcType="VARCHAR" property="menuId"/>
+    </resultMap>
+
+    <sql id="condition">
+        <if test="null != params.roleId and '' != params.roleId">
+            and role_id =#{params.roleId,jdbcType=VARCHAR}
+        </if>
+        <if test="null != params.menuId and '' != params.menuId">
+            and menu_id =#{params.menuId,jdbcType=VARCHAR}
+        </if>
+    </sql>
+
+    <insert id="insert" parameterType="com.example.demo.dao.RoleMenu">
+    insert into role_menu (role_id, menu_id)
+    values (#{roleId,jdbcType=VARCHAR}, #{menuId,jdbcType=VARCHAR})
+  </insert>
+    <insert id="insertSelective" parameterType="com.example.demo.dao.RoleMenu">
+        insert into role_menu
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="roleId != null">
+                role_id,
+            </if>
+            <if test="menuId != null">
+                menu_id,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="roleId != null">
+                #{roleId,jdbcType=VARCHAR},
+            </if>
+            <if test="menuId != null">
+                #{menuId,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+
+    <select id="selectCount" parameterType="java.util.Map" resultType="java.lang.Integer">
+        select count(1)
+        from role_menu
+        where 1=1
+        <include refid="condition"/>
+    </select>
+</mapper>
