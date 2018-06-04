@@ -1,25 +1,41 @@
 package com.example.demo.dao;
 
+import org.hibernate.annotations.GenericGenerator;
+
+import javax.persistence.Column;
+import javax.persistence.Id;
 import java.math.BigDecimal;
 import java.util.Date;
 
 public class OrderDetail {
+
+    @Id
+    @GenericGenerator(name = "idGenerator", strategy = "uuid")
+    @Column(name = "deatail_id")
     private String detailId;
 
+    @Column(name = "order_id")
     private String orderId;
 
+    @Column(name = "product_id")
     private String productId;
 
+    @Column(name = "product_name")
     private String productName;
 
+    @Column(name = "product_price")
     private BigDecimal productPrice;
 
+    @Column(name = "product_quantity")
     private Integer productQuantity;
 
+    @Column(name = "product_icon")
     private String productIcon;
 
+    @Column(name = "create_time")
     private Date createTime;
 
+    @Column(name = "update_time")
     private Date updateTime;
 
     public String getDetailId() {

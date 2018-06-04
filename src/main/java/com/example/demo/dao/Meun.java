@@ -1,16 +1,28 @@
 package com.example.demo.dao;
 
+import org.hibernate.annotations.GenericGenerator;
+
+import javax.persistence.Column;
+import javax.persistence.Id;
 import java.util.Date;
 
 public class Meun {
+
+    @Id
+    @GenericGenerator(name = "idGenerator", strategy = "uuid")
+    @Column(name = "id")
     private String id;
 
+    @Column(name = "name")
     private String name;
 
+    @Column(name = "create_time")
     private Date createTime;
 
+    @Column(name = "update_time")
     private Date updateTime;
 
+    @Column(name = "flag")
     private String flag;
 
     public String getId() {

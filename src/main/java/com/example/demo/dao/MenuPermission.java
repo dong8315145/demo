@@ -1,10 +1,16 @@
 package com.example.demo.dao;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
 import java.io.Serializable;
 
+@Entity
 public class MenuPermission  implements Serializable {
+
+    @Column(name = "menu_id")
     private String menuId;
 
+    @Column(name = "permission_id")
     private String permissionId;
 
     public String getMenuId() {

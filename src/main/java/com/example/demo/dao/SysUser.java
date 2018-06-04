@@ -13,9 +13,10 @@ public class SysUser implements Serializable {
     @Column(name = "id")
     private String id;
 
-    @Column(name = "id")
+    @Column(name = "mail")
     private String mail;
 
+    @Column(name = "name")
     private String name;
 
     private String password;

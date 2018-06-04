@@ -1,10 +1,14 @@
 package com.example.demo.dao;
 
+import javax.persistence.Column;
 import java.io.Serializable;
 
 public class RoleMenu implements Serializable {
+
+    @Column(name = "role_id")
     private String roleId;
 
+    @Column(name = "menu_id")
     private String menuId;
 
     public String getRoleId() {

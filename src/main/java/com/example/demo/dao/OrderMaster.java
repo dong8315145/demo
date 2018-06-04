@@ -4,6 +4,8 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 public class OrderMaster {
+
+
     private String orderId;
 
     private String buyerName;
