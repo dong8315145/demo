@@ -3,9 +3,11 @@ package com.example.demo.dao;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.util.Date;
 
+@Entity
 public class Meun {
 
     @Id

@@ -29,6 +29,7 @@ public class MemberController {
     MemberServiceImpl memberService;
 
     @PostMapping("/list")
+    @Permission(PermissionConstants.DATA_REMOVE)
     public ResultVO list(MemberView memberView) throws DaoException {
         List<Member> list = memberService.list(memberView);
         return new ResultVO(ResultEnum.SUCCESS, list);
@@ -47,7 +48,7 @@ public class MemberController {
     }
 
     @PostMapping("/remove")
-   // @Permission(PermissionConstants.DATA_REMOVE)
+   @Permission(PermissionConstants.DATA_REMOVE)
     public ResultVO remove(MemberDTO memberDTO) throws DaoException{
         if (memberService.remove(memberDTO)) {
             return new ResultVO(ResultEnum.SUCCESS, memberDTO);

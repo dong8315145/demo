@@ -73,7 +73,7 @@
                                         <fieldset>
                                             <label class="block clearfix">
 														<span class="block input-icon input-icon-right">
-															<input type="text" class="form-control"
+															<input id="name" type="text" class="form-control"
                                                                    placeholder="Username"/>
 															<i class="icon-user"></i>
 														</span>
@@ -81,7 +81,7 @@
 
                                             <label class="block clearfix">
 														<span class="block input-icon input-icon-right">
-															<input type="password" class="form-control"
+															<input id="password" type="password" class="form-control"
                                                                    placeholder="Password"/>
 															<i class="icon-lock"></i>
 														</span>
@@ -96,7 +96,7 @@
                                                 </label>
 
                                                 <button type="button"
-                                                        class="width-35 pull-right btn btn-sm btn-primary" onclick="login()">
+                                                        class="width-35 pull-right btn btn-sm btn-primary" onclick="loginForUser();" >
                                                     <i class="icon-key"></i>
                                                     Login
                                                 </button>
@@ -272,15 +272,7 @@
 
 <!-- basic scripts -->
 
-<!--[if !IE]> -->
 
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-
-<!-- <![endif]-->
-
-<!--[if IE]>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-<![endif]-->
 
 <!--[if !IE]> -->
 
@@ -309,19 +301,20 @@
     }
 </script>
 <script>
-    function login() {
+    function loginForUser() {
         $.ajax({
+            type:"POST",
             url: "/common/login",
             dataType:JSON,
             data:{
-                name:name,
-                password:password
+                name:$("#name").val(),
+                password:$("#password").val(),
             },
             success:function (data) {
-                
+
             },
             err:function (data) {
-                
+
             }
         });
     }

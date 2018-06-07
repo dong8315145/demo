@@ -1,9 +1,9 @@
 package com.example.demo.dto;
 
-import com.example.demo.common.units.EnumsUnits;
 import com.example.demo.common.enums.OrderStatusEnum;
 import com.example.demo.common.enums.PayStatusEnum;
-import com.example.demo.entity.OrderDetail;
+import com.example.demo.common.units.EnumsUnits;
+import com.example.demo.dao.OrderDetail;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
 

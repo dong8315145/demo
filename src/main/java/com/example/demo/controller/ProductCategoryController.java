@@ -5,7 +5,7 @@ import com.example.demo.View.ProductCategoryVO;
 import com.example.demo.View.ProductInfoVO;
 import com.example.demo.common.enums.ResultEnum;
 import com.example.demo.dao.ProductCategory;
-import com.example.demo.entity.ProductInfo;
+import com.example.demo.dao.ProductInfo;
 import com.example.demo.service.ProductCategoryService;
 import com.example.demo.service.ProductInfoService;
 import lombok.extern.slf4j.Slf4j;

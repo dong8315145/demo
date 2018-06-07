@@ -1,39 +1,66 @@
 package com.example.demo.dao;
 
+import org.hibernate.annotations.DynamicUpdate;
+import org.hibernate.annotations.GenericGenerator;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.io.Serializable;
 import java.util.Date;
 
+@Entity
+@DynamicUpdate
 public class SysMenu implements Serializable {
+
+    @Id
+    @GenericGenerator(name = "idGenerator", strategy = "uuid")
+    @Column(name = "id")
     private String id;
 
+    @Column(name = "text")
     private String text;
 
+    @Column(name = "pid")
     private String pid;
 
+    @Column(name = "url")
     private String url;
 
+    @Column(name = "custom")
     private String custom;
 
+    @Column(name = "create_child")
     private String createChild;
 
+    @Column(name = "flag")
     private String flag;
 
+    @Column(name = "description")
     private String description;
 
+    @Column(name = "edit_user")
     private String editUser;
 
+    @Column(name = "edit_time")
     private Date editTime;
 
+    @Column(name = "image")
     private String image;
 
+    @Column(name = "show_order")
     private String showOrder;
 
+    @Column(name = "template")
     private String template;
 
+    @Column(name = "datial_template")
     private String detialTemplate;
 
+    @Column(name = "description_en")
     private String descriptionEn;
 
+    @Column(name = "text_en")
     private String textEn;
 
     public String getId() {

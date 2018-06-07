@@ -1,5 +1,6 @@
 package com.example.demo.dao;
 
+import org.hibernate.annotations.DynamicUpdate;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.Column;
@@ -9,6 +10,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 @Entity
+@DynamicUpdate
 public class Member implements Serializable {
     @Id
     @GenericGenerator(name = "idGenerator", strategy = "uuid")

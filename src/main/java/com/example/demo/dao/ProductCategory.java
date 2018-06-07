@@ -1,5 +1,7 @@
 package com.example.demo.dao;
 
+import org.hibernate.annotations.DynamicUpdate;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -7,6 +9,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 @Entity
+@DynamicUpdate
 public class ProductCategory implements Serializable {
 
     @Id

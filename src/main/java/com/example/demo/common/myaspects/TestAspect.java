@@ -22,7 +22,7 @@ import javax.servlet.http.HttpServletRequest;
 @Component
 public class TestAspect {
 
-    @Pointcut("execution(public * com.example.demo.controller.*.*(..))" + "&& !execution(public * com.example.demo.controller.WelcomeController.*.*(..))")
+    @Pointcut("execution(public * com.example.demo.controller.*.*(..))" + "&& !execution(public * com.example.demo.controller.WelcomeController.*.*(..))"+"&& !execution(public * com.example.demo.controller.CommonController.*.*(..))")
     public void verify() {
 
 

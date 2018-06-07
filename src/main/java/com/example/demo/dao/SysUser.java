@@ -1,13 +1,18 @@
 package com.example.demo.dao;
 
+import org.hibernate.annotations.DynamicUpdate;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.io.Serializable;
 import java.util.Date;
 
+@Entity
+@DynamicUpdate
 public class SysUser implements Serializable {
+
     @Id
     @GenericGenerator(name = "idGenerator", strategy = "uuid")
     @Column(name = "id")
@@ -19,18 +24,25 @@ public class SysUser implements Serializable {
     @Column(name = "name")
     private String name;
 
+    @Column(name = "password")
     private String password;
 
+    @Column(name = "flag")
     private String flag;
 
+    @Column(name = "edit_user")
     private String editUser;
 
+    @Column(name = "edit_time")
     private Date editTime;
 
+    @Column(name = "role_id")
     private String roleId;
 
+    @Column(name = "phone")
     private String phone;
 
+    @Column(name = "synopsis")
     private String synopsis;
 
     public String getId() {

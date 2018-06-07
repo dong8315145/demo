@@ -1,29 +1,48 @@
 package com.example.demo.dao;
 
+import org.hibernate.annotations.DynamicUpdate;
+import org.hibernate.annotations.GenericGenerator;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.math.BigDecimal;
 import java.util.Date;
 
+@Entity
+@DynamicUpdate
 public class OrderMaster {
 
-
+    @Id
+    @GenericGenerator(name = "idGenerator", strategy = "uuid")
+    @Column(name = "order_id")
     private String orderId;
 
+    @Column(name = "buyer_name")
     private String buyerName;
 
+    @Column(name = "buyer_phone")
     private String buyerPhone;
 
+    @Column(name = "buyer_address")
     private String buyerAddress;
 
+    @Column(name = "buyer_openid")
     private String buyerOpenid;
 
+    @Column(name = "order_amount")
     private BigDecimal orderAmount;
 
+    @Column(name = "order_status")
     private Byte orderStatus;
 
+    @Column(name = "pay_status")
     private Byte payStatus;
 
+    @Column(name = "create_time")
     private Date createTime;
 
+    @Column(name = "update_time")
     private Date updateTime;
 
     public String getOrderId() {

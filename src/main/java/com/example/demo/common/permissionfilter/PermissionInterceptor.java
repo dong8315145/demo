@@ -12,6 +12,7 @@ import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.core.annotation.AnnotationUtils;
+import org.springframework.stereotype.Component;
 import org.springframework.util.AntPathMatcher;
 import org.springframework.util.PathMatcher;
 import org.springframework.web.method.HandlerMethod;
@@ -25,6 +26,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+@Component
 public class PermissionInterceptor extends HandlerInterceptorAdapter {
 
 
@@ -103,7 +105,9 @@ public class PermissionInterceptor extends HandlerInterceptorAdapter {
 			params.put("roleId", roleId);
 			if (roleMenuMapper.selectCount(params) == 0) {
 				// 通过检查不用拦截
+				System.out.println("通过检查不用拦截");
 			} else {
+				System.out.println("不用通过检查不用拦截");
 				this.throwException(arg0);
 			}
 

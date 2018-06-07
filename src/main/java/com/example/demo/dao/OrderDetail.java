@@ -1,17 +1,21 @@
 package com.example.demo.dao;
 
+import org.hibernate.annotations.DynamicUpdate;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.math.BigDecimal;
 import java.util.Date;
 
+@Entity
+@DynamicUpdate
 public class OrderDetail {
 
     @Id
     @GenericGenerator(name = "idGenerator", strategy = "uuid")
-    @Column(name = "deatail_id")
+    @Column(name = "detail_id")
     private String detailId;
 
     @Column(name = "order_id")

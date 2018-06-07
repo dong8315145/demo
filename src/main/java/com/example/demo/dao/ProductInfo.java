@@ -1,27 +1,48 @@
 package com.example.demo.dao;
 
+import org.hibernate.annotations.DynamicUpdate;
+import org.hibernate.annotations.GenericGenerator;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.math.BigDecimal;
 import java.util.Date;
 
+@Entity
+@DynamicUpdate
 public class ProductInfo {
+
+    @Id
+    @GenericGenerator(name = "idGenerator", strategy = "uuid")
+    @Column(name = "product_id")
     private String productId;
 
+    @Column(name = "product_name")
     private String productName;
 
+    @Column(name = "product_price")
     private BigDecimal productPrice;
 
+    @Column(name = "product_stock")
     private Integer productStock;
 
+    @Column(name = "product_description")
     private String productDescription;
 
+    @Column(name = "product_icon")
     private String productIcon;
 
+    @Column(name = "product_status")
     private Byte productStatus;
 
+    @Column(name = "product_type")
     private Integer categoryType;
 
+    @Column(name = "create_time")
     private Date createTime;
 
+    @Column(name = "update_time")
     private Date updateTime;
 
     public String getProductId() {

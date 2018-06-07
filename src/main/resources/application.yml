@@ -42,3 +42,6 @@ pagehelper:
     supportMethodsArguments: true
     params: count=countSql
 
+logging:
+  level:
+     com.example.demo.dao : debug

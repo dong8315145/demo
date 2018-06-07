@@ -3,6 +3,7 @@ package com.example.demo.controller;
 import com.example.demo.dao.Member;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -14,12 +15,12 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping("/common")
 public class CommonController {
 
-    @RequestMapping("/login")
+    @PostMapping("/login")
     public ModelAndView login(Member member){
         ModelAndView modelAndView=new ModelAndView();
         //TODO 查数据库,返回用户数据（用户，菜单）
         modelAndView.addObject("member" ,member);
-        modelAndView.setViewName("index");
+        modelAndView.setViewName("redirect:/welcome/index");
         return modelAndView;
     }
 }

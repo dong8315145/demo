@@ -1,7 +1,9 @@
 package com.example.demo.service.impl;
 
 import com.example.demo.View.MemberView;
+import com.example.demo.common.constant.PermissionConstants;
 import com.example.demo.common.exception.DaoException;
+import com.example.demo.common.permissionfilter.Permission;
 import com.example.demo.dao.Member;
 import com.example.demo.dao.ProductCategory;
 import com.example.demo.dao.mapper.MemberMapper;
@@ -15,7 +17,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import tk.mybatis.spring.annotation.MapperScan;
 
-import java.awt.*;
 import java.util.List;
 
 
@@ -59,6 +60,7 @@ public class MemberServiceImplTest {
     }
 
     @Test
+    @Permission(PermissionConstants.DATA_REMOVE)
     public void listTest() throws DaoException {
         MemberView memberVive = new MemberView();
         memberVive.setPageNum(0);

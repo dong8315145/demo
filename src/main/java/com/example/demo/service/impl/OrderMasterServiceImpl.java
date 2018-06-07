@@ -3,9 +3,9 @@ package com.example.demo.service.impl;
 import com.example.demo.common.enums.PayStatusEnum;
 import com.example.demo.common.enums.ResultEnum;
 import com.example.demo.common.exception.ResultException;
+import com.example.demo.dao.OrderDetail;
+import com.example.demo.dao.ProductInfo;
 import com.example.demo.dto.OrderMasterDTO;
-import com.example.demo.entity.OrderDetail;
-import com.example.demo.entity.ProductInfo;
 import com.example.demo.service.OrderDetailService;
 import com.example.demo.service.OrderMasterService;
 import com.example.demo.service.ProductInfoService;
@@ -42,7 +42,7 @@ public class OrderMasterServiceImpl implements OrderMasterService {
             if (productInfo == null) {
                 new ResultException(ResultEnum.FAIL);
             }
-            orderAmount = od.getProductPice()
+            orderAmount = od.getProductPrice()
                     .multiply(new BigDecimal(od.getProductQuantity())).add(orderAmount);
         }
         return null;

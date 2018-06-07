@@ -1,19 +1,36 @@
 package com.example.demo.dao;
 
+import org.hibernate.annotations.DynamicUpdate;
+import org.hibernate.annotations.GenericGenerator;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.io.Serializable;
 import java.util.Date;
 
+@Entity
+@DynamicUpdate
 public class SysRole implements Serializable {
+
+    @Id
+    @GenericGenerator(name = "idGenerator", strategy = "uuid")
+    @Column(name = "id")
     private String id;
 
+    @Column(name = "name")
     private String name;
 
+    @Column(name = "remark")
     private String remark;
 
+    @Column(name = "flag")
     private String flag;
 
+    @Column(name = "edit_time")
     private Date editTime;
 
+    @Column(name = "edit_user")
     private String editUser;
 
     public String getId() {
