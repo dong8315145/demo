@@ -16,7 +16,7 @@ spring:
     view:
       prefix: /WEB-INF/jsp/
       suffix: .jsp
-    static-path-pattern: /**
+    static-path-pattern: /welcome/**
   resources:
     static-locations: "classpath:/META-INF/resources/,classpath:/resources/,\
                          classpath:/static/,classpath:/public/,file:${web.upload-path}"

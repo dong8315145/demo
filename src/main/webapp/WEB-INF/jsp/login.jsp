@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <meta charset="utf-8"/>
-<title>登录页面 - Bootstrap后台管理系统模版Ace下载</title>
+<title>登录页面</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
 <!-- basic styles -->
@@ -96,7 +96,7 @@
                                                 </label>
 
                                                 <button type="button"
-                                                        class="width-35 pull-right btn btn-sm btn-primary" onclick="loginForUser();" >
+                                                        class="width-35 pull-right btn btn-sm btn-primary" onclick="login();" >
                                                     <i class="icon-key"></i>
                                                     Login
                                                 </button>
@@ -301,20 +301,22 @@
     }
 </script>
 <script>
-    function loginForUser() {
+    function login() {
+        var form = new FormData();
+        form.append("name",$("#name").val());
+        form.append("password",$("#password").val());
         $.ajax({
             type:"POST",
             url: "/common/login",
-            dataType:JSON,
-            data:{
-                name:$("#name").val(),
-                password:$("#password").val(),
-            },
+            data:form,
+            processData:false,
+            contentType:false,
             success:function (data) {
-
+                window.location.href="/welcome/index";
+          //  alert(200);
             },
-            err:function (data) {
-
+            error:function(data){
+                alert("404");
             }
         });
     }

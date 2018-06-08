@@ -1,7 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <head>
     <meta charset="utf-8" />
     <title>控制台 - Bootstrap后台管理系统模版Ace下载</title>
@@ -11,6 +10,7 @@
     <!-- basic styles -->
     <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="assets/css/font-awesome.min.css" />
+
     <!--[if IE 7]>
     <link rel="stylesheet" href="assets/css/font-awesome-ie7.min.css" />
     <![endif]-->
@@ -22,7 +22,7 @@
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400,300" />
 
     <!-- ace styles -->
-    <%@include file="head.jsp" %>
+
     <link rel="stylesheet" href="assets/css/ace.min.css" />
     <link rel="stylesheet" href="assets/css/ace-rtl.min.css" />
     <link rel="stylesheet" href="assets/css/ace-skins.min.css" />

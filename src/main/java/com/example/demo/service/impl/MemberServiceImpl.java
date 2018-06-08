@@ -13,7 +13,6 @@ import com.example.demo.service.MemberService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -48,12 +47,13 @@ public class MemberServiceImpl implements MemberService {
     @Transactional(propagation = Propagation.REQUIRED)
     @Override
     public List<Member> list(MemberView memberView) throws DaoException {
-         PageHelper.startPage(memberView.getPageNum(), memberView.getPageSize(), memberView.getOrderByKey());
+
+        PageHelper.startPage(memberView.getPageNum(), memberView.getPageSize(), memberView.getOrderByKey());
         Map<String, Object> params = new HashMap<String, Object>();
         params.put("name", memberView.getName());
         System.out.println("name:" + params.get("name"));
         List<Member> list = new ArrayList<>();
-        list  = memberMapper.selectByParams(params);
+        list = memberMapper.selectByParams(params);
         PageInfo<Member> pageInfo = new PageInfo<Member>(list);
         return list;
     }
@@ -61,7 +61,8 @@ public class MemberServiceImpl implements MemberService {
     @Transactional(propagation = Propagation.REQUIRED)
     @Override
     public Boolean add(Member member) {
-        memberRepository.save(member);
+        Member mermeber = memberRepository.save(member);
+        redisManager.setAdd(REDIS_PREFIX + ID + member.getId(), member);
         return true;
     }
 
@@ -128,9 +129,11 @@ public class MemberServiceImpl implements MemberService {
         return true;
     }
 
+
     private Member findIt(String id) throws DaoException {
-        Member member = (Member) redisManager.get(ID + id);
+        Member member = (Member) redisManager.get(REDIS_PREFIX + ID + id);
         if (null == member) {
+
             member = memberRepository.findById(id).get();
             if (null != member) {
                 redisManager.add(ID + id, member);

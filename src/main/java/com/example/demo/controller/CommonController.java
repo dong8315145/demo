@@ -15,12 +15,12 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping("/common")
 public class CommonController {
 
-    @PostMapping("/login")
+    @PostMapping(value = "login")
     public ModelAndView login(Member member){
         ModelAndView modelAndView=new ModelAndView();
         //TODO 查数据库,返回用户数据（用户，菜单）
         modelAndView.addObject("member" ,member);
-        modelAndView.setViewName("redirect:/welcome/index");
+        modelAndView.setViewName("index");
         return modelAndView;
     }
 }
