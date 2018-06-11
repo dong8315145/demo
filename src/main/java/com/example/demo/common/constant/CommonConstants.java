@@ -8,8 +8,9 @@ package com.example.demo.common.constant;
  **/
 public class CommonConstants {
 
+    //用于flag字段的状态
     public static final String VALID="1";
-
+    //用于flag字段的状态
     public static final String INVALID="0";
 
     public static final String LOGIN_USER="login_user";
