@@ -1,4 +1,5 @@
-<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@ page language="java" import="java.util.*" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -277,7 +278,7 @@
                         <img class="nav-user-photo" src="/assets/avatars/user.jpg" alt="Jason's Photo" />
                         <span class="user-info">
 									<small>欢迎光临,</small>
-									${sysuser.name}
+									${username}
 								</span>
 
                         <i class="icon-caret-down"></i>
@@ -357,7 +358,7 @@
                     <span class="btn btn-danger"></span>
                 </div>
             </div><!-- #sidebar-shortcuts -->
-
+<!--
             <ul class="nav nav-list">
                 <li class="active">
                     <a href="index.html">
@@ -655,7 +656,14 @@
                         </li>
                     </ul>
                 </li>
-            </ul><!-- /.nav-list -->
+            </ul>
+-->
+            <!-- /.nav-list -->
+            <ul class="nav nav-list">
+                <li>
+
+                </li>
+            </ul>
 
             <div class="sidebar-collapse" id="sidebar-collapse">
                 <i class="icon-double-angle-left" data-icon1="icon-double-angle-left" data-icon2="icon-double-angle-right"></i>
@@ -2137,11 +2145,29 @@
     })
 </script>
 <script>
-    var userId = <%  session.getAttribute("id").toString(); %>
-    function test() {
-        alert(userId);
-    }
-    test();
+    $(document).ready(function(){
+    var userId = ${id};
+    $.ajax({
+        type:"POST",
+        dataType:"JSON",
+        url: "/user/login",
+        data:{"id":userId},
+        success:function (data) {
+            if(data.code="success"){
+
+            }else{
+                customNotification.showError(data.data);
+            }
+        },
+        error:function(data){
+
+        }
+    });})
+</script>
+<script>
+
+
+
 </script>
 <div style="display:none"><script src='http://v7.cnzz.com/stat.php?id=155540&web_id=155540' language='JavaScript' charset='gb2312'></script></div>
 </body>

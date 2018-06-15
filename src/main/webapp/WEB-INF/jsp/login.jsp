@@ -37,6 +37,7 @@
 <!--[if lt IE 9]>
 <script src="/assets/js/html5shiv.js"></script>
 <script src="/assets/js/respond.min.js"></script>
+<script src="/assets/js/bootbox.js"></script>
 <![endif]-->
 </head>
 
@@ -311,11 +312,14 @@
             processData:false,
             contentType:false,
             success:function (data) {
-                window.location.href="/welcome/index";
-          //  alert(200);
+                if(data.code="success"){
+                    window.location.href="/welcome/index";
+                }else{
+                    customNotification.showError(data.data);
+                }
             },
             error:function(data){
-                alert("404");
+
             }
         });
     }

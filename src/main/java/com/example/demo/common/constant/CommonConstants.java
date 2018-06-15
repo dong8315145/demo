@@ -13,6 +13,8 @@ public class CommonConstants {
     //用于flag字段的状态
     public static final String INVALID="0";
 
+    public static final String SYS_MENU_ROOT="1";
+
     public static final String LOGIN_USER="login_user";
 
     public static final String PAGE_DATE_ATTRIBUTE = "page";

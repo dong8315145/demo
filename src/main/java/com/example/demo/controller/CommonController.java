@@ -32,6 +32,7 @@ public class CommonController {
             sysUser1 = sysUserRepository.findByPhoneAndPasswordAndFlag(sysUser.getName(), sysUser.getPassword(), CommonConstants.VALID);
             if (sysUser1 != null) {
                 request.getSession().setAttribute("id",sysUser1.getId());
+                request.getSession().setAttribute("username",sysUser1.getName());
                 modelAndView.setViewName("index");
                 return modelAndView;
             }else{
@@ -39,6 +40,7 @@ public class CommonController {
             }
         }
         request.getSession().setAttribute("id",sysUser1.getId());
+        request.getSession().setAttribute("username",sysUser1.getName());
         modelAndView.setViewName("index");
         return modelAndView;
     }
