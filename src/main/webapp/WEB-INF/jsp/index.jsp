@@ -951,7 +951,7 @@
         '                    </a>\n' +
         '                </li>';
     $(".nav-list").append(htmltemp);
-    alert(menu);
+    alert(menu.text);
     alert(userId);
     $.ajax({
         type:"POST",

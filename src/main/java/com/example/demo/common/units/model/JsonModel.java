@@ -1,4 +1,4 @@
-package com.example.demo.common.units;
+package com.example.demo.common.units.model;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;

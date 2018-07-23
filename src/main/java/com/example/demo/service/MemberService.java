@@ -7,6 +7,7 @@ import com.example.demo.dao.Member;
 import com.example.demo.dto.MemberDTO;
 
 import java.util.List;
+import java.util.Locale;
 
 /**
  * @program: demo
@@ -19,6 +20,8 @@ public interface MemberService {
      List<Member> list(MemberView memberView)throws DaoException;
 
      MemberDTO login(MemberDTO memberDTO)throws DaoException;
+
+     MemberDTO login(MemberDTO memberDTO,Locale locale)throws DaoException;
 
      Boolean add(Member member)throws DaoException;
 

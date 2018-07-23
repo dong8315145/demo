@@ -3,7 +3,9 @@ package com.example.demo.service.impl;
 import com.example.demo.View.MemberView;
 import com.example.demo.common.enums.ResultEnum;
 import com.example.demo.common.exception.DaoException;
+import com.example.demo.common.exception.FrameException;
 import com.example.demo.common.exception.ResultException;
+import com.example.demo.common.units.Message;
 import com.example.demo.dao.Member;
 import com.example.demo.dao.mapper.MemberMapper;
 import com.example.demo.dto.MemberDTO;
@@ -43,6 +45,8 @@ public class MemberServiceImpl implements MemberService {
 
     @Autowired
     private MemberMapper memberMapper;
+
+
 
     @Transactional(propagation = Propagation.REQUIRED)
     @Override
@@ -129,6 +133,16 @@ public class MemberServiceImpl implements MemberService {
         return true;
     }
 
+    @Override
+    public MemberDTO login(MemberDTO memberDTO, Locale locale) throws DaoException {
+        Member member = memberRepository.findMemberByNameAndPassword(memberDTO.getName(), memberDTO.getPassword());
+        if (member != null) {
+            return memberDTO;
+        } else {
+            throw new FrameException(Message.getMessage("login.error", locale));
+        }
+        return null;
+    }
 
     private Member findIt(String id) throws DaoException {
         Member member = (Member) redisManager.get(REDIS_PREFIX + ID + id);

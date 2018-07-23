@@ -12,6 +12,7 @@ spring:
     open-in-view: true
   jackson:
     default-property-inclusion: non_null
+    joda-date-time-format: yyyy-MM-dd HH:mm:ss
   mvc:
     view:
       prefix: /WEB-INF/jsp/
@@ -45,3 +46,6 @@ pagehelper:
 logging:
   level:
      com.example.demo.dao : debug
+
+ uploadfile:
+ uploadfilepath:   /root

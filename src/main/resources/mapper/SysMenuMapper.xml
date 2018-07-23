@@ -23,6 +23,225 @@
     id, text, pid, url, custom, create_child, flag, description, edit_user, edit_time, 
     image, show_order, template, detial_template, description_en, text_en
   </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from sys_menu
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from sys_menu
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.example.demo.dao.SysMenu">
+    insert into sys_menu (id, text, pid, 
+      url, custom, create_child, 
+      flag, description, edit_user, 
+      edit_time, image, show_order, 
+      template, detial_template, description_en, 
+      text_en)
+    values (#{id,jdbcType=VARCHAR}, #{text,jdbcType=VARCHAR}, #{pid,jdbcType=VARCHAR}, 
+      #{url,jdbcType=VARCHAR}, #{custom,jdbcType=VARCHAR}, #{createChild,jdbcType=VARCHAR}, 
+      #{flag,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, #{editUser,jdbcType=VARCHAR}, 
+      #{editTime,jdbcType=TIMESTAMP}, #{image,jdbcType=VARCHAR}, #{showOrder,jdbcType=VARCHAR}, 
+      #{template,jdbcType=VARCHAR}, #{detialTemplate,jdbcType=VARCHAR}, #{descriptionEn,jdbcType=VARCHAR}, 
+      #{textEn,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.demo.dao.SysMenu">
+    insert into sys_menu
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="text != null">
+        text,
+      </if>
+      <if test="pid != null">
+        pid,
+      </if>
+      <if test="url != null">
+        url,
+      </if>
+      <if test="custom != null">
+        custom,
+      </if>
+      <if test="createChild != null">
+        create_child,
+      </if>
+      <if test="flag != null">
+        flag,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+      <if test="editUser != null">
+        edit_user,
+      </if>
+      <if test="editTime != null">
+        edit_time,
+      </if>
+      <if test="image != null">
+        image,
+      </if>
+      <if test="showOrder != null">
+        show_order,
+      </if>
+      <if test="template != null">
+        template,
+      </if>
+      <if test="detialTemplate != null">
+        detial_template,
+      </if>
+      <if test="descriptionEn != null">
+        description_en,
+      </if>
+      <if test="textEn != null">
+        text_en,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="text != null">
+        #{text,jdbcType=VARCHAR},
+      </if>
+      <if test="pid != null">
+        #{pid,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null">
+        #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="custom != null">
+        #{custom,jdbcType=VARCHAR},
+      </if>
+      <if test="createChild != null">
+        #{createChild,jdbcType=VARCHAR},
+      </if>
+      <if test="flag != null">
+        #{flag,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="editUser != null">
+        #{editUser,jdbcType=VARCHAR},
+      </if>
+      <if test="editTime != null">
+        #{editTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="image != null">
+        #{image,jdbcType=VARCHAR},
+      </if>
+      <if test="showOrder != null">
+        #{showOrder,jdbcType=VARCHAR},
+      </if>
+      <if test="template != null">
+        #{template,jdbcType=VARCHAR},
+      </if>
+      <if test="detialTemplate != null">
+        #{detialTemplate,jdbcType=VARCHAR},
+      </if>
+      <if test="descriptionEn != null">
+        #{descriptionEn,jdbcType=VARCHAR},
+      </if>
+      <if test="textEn != null">
+        #{textEn,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.demo.dao.SysMenu">
+    update sys_menu
+    <set>
+      <if test="text != null">
+        text = #{text,jdbcType=VARCHAR},
+      </if>
+      <if test="pid != null">
+        pid = #{pid,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null">
+        url = #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="custom != null">
+        custom = #{custom,jdbcType=VARCHAR},
+      </if>
+      <if test="createChild != null">
+        create_child = #{createChild,jdbcType=VARCHAR},
+      </if>
+      <if test="flag != null">
+        flag = #{flag,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="editUser != null">
+        edit_user = #{editUser,jdbcType=VARCHAR},
+      </if>
+      <if test="editTime != null">
+        edit_time = #{editTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="image != null">
+        image = #{image,jdbcType=VARCHAR},
+      </if>
+      <if test="showOrder != null">
+        show_order = #{showOrder,jdbcType=VARCHAR},
+      </if>
+      <if test="template != null">
+        template = #{template,jdbcType=VARCHAR},
+      </if>
+      <if test="detialTemplate != null">
+        detial_template = #{detialTemplate,jdbcType=VARCHAR},
+      </if>
+      <if test="descriptionEn != null">
+        description_en = #{descriptionEn,jdbcType=VARCHAR},
+      </if>
+      <if test="textEn != null">
+        text_en = #{textEn,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.demo.dao.SysMenu">
+    update sys_menu
+    set text = #{text,jdbcType=VARCHAR},
+      pid = #{pid,jdbcType=VARCHAR},
+      url = #{url,jdbcType=VARCHAR},
+      custom = #{custom,jdbcType=VARCHAR},
+      create_child = #{createChild,jdbcType=VARCHAR},
+      flag = #{flag,jdbcType=VARCHAR},
+      description = #{description,jdbcType=VARCHAR},
+      edit_user = #{editUser,jdbcType=VARCHAR},
+      edit_time = #{editTime,jdbcType=TIMESTAMP},
+      image = #{image,jdbcType=VARCHAR},
+      show_order = #{showOrder,jdbcType=VARCHAR},
+      template = #{template,jdbcType=VARCHAR},
+      detial_template = #{detialTemplate,jdbcType=VARCHAR},
+      description_en = #{descriptionEn,jdbcType=VARCHAR},
+      text_en = #{textEn,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <resultMap id="BaseResultMap" type="com.example.demo.dao.SysMenu">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="text" jdbcType="VARCHAR" property="text" />
+    <result column="pid" jdbcType="VARCHAR" property="pid" />
+    <result column="url" jdbcType="VARCHAR" property="url" />
+    <result column="custom" jdbcType="VARCHAR" property="custom" />
+    <result column="create_child" jdbcType="VARCHAR" property="createChild" />
+    <result column="flag" jdbcType="VARCHAR" property="flag" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="edit_user" jdbcType="VARCHAR" property="editUser" />
+    <result column="edit_time" jdbcType="TIMESTAMP" property="editTime" />
+    <result column="image" jdbcType="VARCHAR" property="image" />
+    <result column="show_order" jdbcType="VARCHAR" property="showOrder" />
+    <result column="template" jdbcType="VARCHAR" property="template" />
+    <result column="detial_template" jdbcType="VARCHAR" property="detialTemplate" />
+    <result column="description_en" jdbcType="VARCHAR" property="descriptionEn" />
+    <result column="text_en" jdbcType="VARCHAR" property="textEn" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, text, pid, url, custom, create_child, flag, description, edit_user, edit_time, 
+    image, show_order, template, detial_template, description_en, text_en
+  </sql>
 
   <sql id="condition">
     <if test="null != params.text and '' != params.text">
@@ -257,6 +476,6 @@
     select count(1)
     from sys_menu
     where 1=1
-    <include refid="condition"/>
+    <include refid="condition" />
   </select>
 </mapper>

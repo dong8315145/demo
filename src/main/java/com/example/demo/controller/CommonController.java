@@ -29,7 +29,7 @@ public class CommonController {
     @Autowired
     SysMenuServiceImpl sysMenuService;
 
-    @PostMapping(value = "/login")
+    @PostMapping(value = "login")
     public ModelAndView login(HttpServletRequest request, SysUser sysUser) {
         ModelAndView modelAndView = new ModelAndView();
         SysUser temp=sysUserRepository.findByNameAndPasswordAndFlag(sysUser.getName(),sysUser.getPassword(),CommonConstants.VALID);
@@ -40,7 +40,7 @@ public class CommonController {
             modelAndView.setViewName("index");
             return modelAndView;
         }else{
-
+            modelAndView.setViewName("index");
         }
 //        request.getSession().setAttribute("id",sysUser1.getId());
 //        request.getSession().setAttribute("username",sysUser1.getName());

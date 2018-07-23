@@ -28,4 +28,31 @@
       </if>
     </trim>
   </insert>
+  <resultMap id="BaseResultMap" type="com.example.demo.dao.MenuPermission">
+    <result column="menu_id" jdbcType="VARCHAR" property="menuId" />
+    <result column="permission_id" jdbcType="VARCHAR" property="permissionId" />
+  </resultMap>
+  <insert id="insert" parameterType="com.example.demo.dao.MenuPermission">
+    insert into menu_permission (menu_id, permission_id)
+    values (#{menuId,jdbcType=VARCHAR}, #{permissionId,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.demo.dao.MenuPermission">
+    insert into menu_permission
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="menuId != null">
+        menu_id,
+      </if>
+      <if test="permissionId != null">
+        permission_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="menuId != null">
+        #{menuId,jdbcType=VARCHAR},
+      </if>
+      <if test="permissionId != null">
+        #{permissionId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
 </mapper>

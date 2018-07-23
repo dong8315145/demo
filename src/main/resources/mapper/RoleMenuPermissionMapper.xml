@@ -1,10 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.demo.dao.mapper.RoleMenuPermissionMapper">
+  <resultMap id="BaseResultMap" type="com.example.demo.dao.RoleMenuPermission">
+    <result column="role_id" jdbcType="VARCHAR" property="roleId" />
+    <result column="menu_id" jdbcType="VARCHAR" property="menuId" />
+    <result column="permission_id" jdbcType="VARCHAR" property="permissionId" />
+  </resultMap>
+  <insert id="insert" parameterType="com.example.demo.dao.RoleMenuPermission">
+    insert into role_menu_permission (role_id, menu_id, permission_id
+      )
+    values (#{roleId,jdbcType=VARCHAR}, #{menuId,jdbcType=VARCHAR}, #{permissionId,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.demo.dao.RoleMenuPermission">
+    insert into role_menu_permission
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="roleId != null">
+        role_id,
+      </if>
+      <if test="menuId != null">
+        menu_id,
+      </if>
+      <if test="permissionId != null">
+        permission_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="roleId != null">
+        #{roleId,jdbcType=VARCHAR},
+      </if>
+      <if test="menuId != null">
+        #{menuId,jdbcType=VARCHAR},
+      </if>
+      <if test="permissionId != null">
+        #{permissionId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
     <resultMap id="BaseResultMap" type="com.example.demo.dao.RoleMenuPermission">
-        <result column="role_id" jdbcType="VARCHAR" property="roleId"/>
-        <result column="menu_id" jdbcType="VARCHAR" property="menuId"/>
-        <result column="permission_id" jdbcType="VARCHAR" property="permissionId"/>
+        <result column="role_id" jdbcType="VARCHAR" property="roleId" />
+        <result column="menu_id" jdbcType="VARCHAR" property="menuId" />
+        <result column="permission_id" jdbcType="VARCHAR" property="permissionId" />
     </resultMap>
 
     <sql id="condition">
@@ -54,6 +90,6 @@
         select count(1)
         from role_menu_permission
         where 1=1
-        <include refid="condition"/>
+        <include refid="condition" />
     </select>
 </mapper>

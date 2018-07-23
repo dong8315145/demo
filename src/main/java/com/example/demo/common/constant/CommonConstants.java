@@ -8,17 +8,23 @@ package com.example.demo.common.constant;
  **/
 public class CommonConstants {
 
+    public static final String SCHEMA = "demo";
+
     //用于flag字段的状态
     public static final String VALID="1";
     //用于flag字段的状态
     public static final String INVALID="0";
 
-    public static final String SYS_MENU_ROOT="1";
+    //public static final String SYS_MENU_ROOT="1";
+    public static final String SYS_MENU_ROOT="0000000000";
 
     public static final String LOGIN_USER="login_user";
 
     public static final String PAGE_DATE_ATTRIBUTE = "page";
 
     public static final String ERROR_VIEW_NAME = "/error";
+
+
+    public static final String ENCODE = "utf-8";
 
 }
