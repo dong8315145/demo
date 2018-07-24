@@ -1,8 +1,8 @@
 package com.example.demo.common.units.model;
 
-import java.net.URLEncoder;
+import org.apache.commons.lang3.StringUtils;
 
-import org.apache.commons.lang.StringUtils;
+import java.net.URLEncoder;
 
 public class FileModel {
     private String fileName;

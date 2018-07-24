@@ -2,6 +2,9 @@ package com.example.demo.dao.mapper;
 
 import com.example.demo.dao.ProductInfo;
 
+/**
+ * @author Administrator
+ */
 public interface ProductInfoMapper {
     int deleteByPrimaryKey(String productId);
 

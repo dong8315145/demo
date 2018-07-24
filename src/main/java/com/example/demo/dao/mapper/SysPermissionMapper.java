@@ -1,7 +1,9 @@
 package com.example.demo.dao.mapper;
 
 import com.example.demo.dao.SysPermission;
+import org.springframework.stereotype.Component;
 
+@Component
 public interface SysPermissionMapper {
     int deleteByPrimaryKey(String id);
 

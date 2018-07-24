@@ -14,6 +14,8 @@ import org.apache.commons.io.FileUtils;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
+import org.springframework.data.domain.Example;
+import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
@@ -39,7 +41,7 @@ import java.util.regex.Pattern;
  * @create: 2018-07-23 16:27
  **/
 @Slf4j
-public class BaseServiceImpl  implements BaseService {
+public class BaseServiceImpl implements BaseService {
 
 
     @Autowired
@@ -60,13 +62,6 @@ public class BaseServiceImpl  implements BaseService {
     public void setApplicationContext(ApplicationContext arg0) throws BeansException {
         this.ac = arg0;
     }
-
-
-
-
-
-
-
 
 
     protected String uuid() {
@@ -135,7 +130,7 @@ public class BaseServiceImpl  implements BaseService {
     protected String saveFile(MultipartFile file, String dir, String type) throws Exception {
         Timestamp ts = new Timestamp(System.currentTimeMillis());
         String image = dir + new SimpleDateFormat("yyyy-MM-dd").format(ts) + "/img_" + this.uuid();
-        FileUtils.writeByteArrayToFile(new File(new UploadFileConfig().getUploadfilepath()+ image), file.getBytes());
+        FileUtils.writeByteArrayToFile(new File(new UploadFileConfig().getUploadfilepath() + image), file.getBytes());
         UploadFile model = new UploadFile();
         model.setPath(image);
         model.setName(file.getOriginalFilename());
@@ -147,12 +142,9 @@ public class BaseServiceImpl  implements BaseService {
 
     @SuppressWarnings("unchecked")
     public String file(String id) {
-        List<Object[]> objectList = dao
-                .queryAll(DetachedCriteria.forClass(UploadFile.class).add(Restrictions.idEq(id)).setProjection(
-                        Projections.projectionList().add(Property.forName("path")).add(Property.forName("fileName"))));
-        if (CollectionUtils.isNotEmpty(objectList)) {
-            Object[] object = objectList.get(0);
-            return new UploadFileConfig().getUploadfilepath() + object[0] + (object[1] == null ? "" : object[1]);
+        UploadFile uploadFile = uploadFileRepository.findById(id).get();
+        if (uploadFile != null) {
+            return new UploadFileConfig().getUploadfilepath() + uploadFile.getId() + (uploadFile.getName() == null ? "" : uploadFile.getName());
         }
         return null;
     }
@@ -160,22 +152,13 @@ public class BaseServiceImpl  implements BaseService {
     @SuppressWarnings("unchecked")
     public FileModel fileEx(String id) {
         FileModel fm = new FileModel();
-        List<Object[]> objectList = dao.queryAll(DetachedCriteria.forClass(UploadFile.class).add(Restrictions.idEq(id))
-                .setProjection(Projections.projectionList().add(Property.forName("path"))
-                        .add(Property.forName("fileName")).add(Property.forName("name"))));
-        List<Object[]> objectList=
-                uploadFileRepository.findAll()
-        if (CollectionUtils.isNotEmpty(objectList)) {
-            Object[] object = objectList.get(0);
-            fm.setSource(new UploadFileConfig().getUploadfilepath() + object[0] + (object[1] == null ? "" : object[1]));
-            fm.setFileName((String) object[2]);
+        UploadFile uploadFile = uploadFileRepository.findById(id).get();
+        if (uploadFile != null) {
+            fm.setSource(new UploadFileConfig().getUploadfilepath() + uploadFile.getId() + (uploadFile.getName() == null ? "" : uploadFile.getName()));
+            fm.setFileName(uploadFile.getFileName());
         }
         return fm;
     }
-
-
-
-
 
 
     /**

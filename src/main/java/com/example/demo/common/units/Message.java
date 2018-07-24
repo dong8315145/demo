@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class Message implements ApplicationContextAware {
+
     private ApplicationContext ac;
 
     @Override

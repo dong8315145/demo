@@ -1,7 +1,9 @@
 package com.example.demo.dao.mapper;
 
 import com.example.demo.dao.SysUser;
+import org.springframework.stereotype.Component;
 
+@Component
 public interface SysUserMapper {
     int deleteByPrimaryKey(String id);
 

@@ -134,14 +134,13 @@ public class MemberServiceImpl implements MemberService {
     }
 
     @Override
-    public MemberDTO login(MemberDTO memberDTO, Locale locale) throws DaoException {
+    public MemberDTO login(MemberDTO memberDTO, Locale locale) throws  FrameException {
         Member member = memberRepository.findMemberByNameAndPassword(memberDTO.getName(), memberDTO.getPassword());
         if (member != null) {
             return memberDTO;
         } else {
-            throw new FrameException(Message.getMessage("login.error", locale));
+            throw new FrameException(new Message().getMessage("login.error", locale));
         }
-        return null;
     }
 
     private Member findIt(String id) throws DaoException {

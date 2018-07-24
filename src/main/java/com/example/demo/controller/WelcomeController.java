@@ -28,7 +28,7 @@ public class WelcomeController {
     MemberService memberService;
 
     @GetMapping("/index")
-    public void welcome(){ };
+    public String welcome(){   return "index";};
 
     @GetMapping("/login.html")
     public String login(HttpSession session,MemberDTO memberDTO, ModelMap modelMap)
@@ -42,21 +42,21 @@ public class WelcomeController {
             session.setAttribute(CommonConstants.LOGIN_USER,    memberService.login(memberDTO,
                     locale));
             //国际化
-            return "redirect:workspace.html";
+            return "redirect:login";
         } catch (FrameException e) {
             modelMap.addAttribute(CommonConstants.PAGE_DATE_ATTRIBUTE, memberDTO);
             modelMap.addAttribute("error", e.getMessage());
         }
-        return "login/index";
+        return "index";
     }
 
-    @GetMapping("/workspace.html")
-    public void workspace(HttpServletRequest request, ModelMap modelMap)
-            throws Exception {
-        String id = (String)WebUtils.getSessionAttribute(request,CommonConstants.LOGIN_USER);
-        modelMap.addAttribute(CommonConstants.PAGE_DATE_ATTRIBUTE, super.om
-                .writeValueAsString(service.queryMenu(id, super
-                        .getLocale(request))));
-        modelMap.addAttribute("mail", memberService.queryMail(id));
-    }
+//    @GetMapping("/workspace.html")
+//    public void workspace(HttpServletRequest request, ModelMap modelMap)
+//            throws Exception {
+//        String id = (String)WebUtils.getSessionAttribute(request,CommonConstants.LOGIN_USER);
+//        modelMap.addAttribute(CommonConstants.PAGE_DATE_ATTRIBUTE, super.om
+//                .writeValueAsString(service.queryMenu(id, super
+//                        .getLocale(request))));
+//        modelMap.addAttribute("mail", memberService.queryMail(id));
+//    }
 }

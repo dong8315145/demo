@@ -3,6 +3,7 @@ package com.example.demo.service;
 import com.example.demo.View.BaseView.ResultVO;
 import com.example.demo.View.MemberView;
 import com.example.demo.common.exception.DaoException;
+import com.example.demo.common.exception.FrameException;
 import com.example.demo.dao.Member;
 import com.example.demo.dto.MemberDTO;
 
@@ -21,7 +22,7 @@ public interface MemberService {
 
      MemberDTO login(MemberDTO memberDTO)throws DaoException;
 
-     MemberDTO login(MemberDTO memberDTO,Locale locale)throws DaoException;
+     MemberDTO login(MemberDTO memberDTO,Locale locale) throws DaoException, FrameException;
 
      Boolean add(Member member)throws DaoException;
 

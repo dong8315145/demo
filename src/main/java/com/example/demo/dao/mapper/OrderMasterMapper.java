@@ -1,7 +1,9 @@
 package com.example.demo.dao.mapper;
 
 import com.example.demo.dao.OrderMaster;
+import org.springframework.stereotype.Component;
 
+@Component
 public interface OrderMasterMapper {
     int deleteByPrimaryKey(String orderId);
 
