@@ -17,6 +17,7 @@ import com.github.pagehelper.PageInfo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -102,6 +103,7 @@ public class MemberServiceImpl implements MemberService {
 
     @Transactional(propagation = Propagation.REQUIRED)
     @Override
+    @Cacheable(value = "member", key = "#id")
     public Member getMemberById(String id) throws DaoException {
         return findIt(id);
     }
@@ -146,7 +148,6 @@ public class MemberServiceImpl implements MemberService {
     private Member findIt(String id) throws DaoException {
         Member member = (Member) redisManager.get(REDIS_PREFIX + ID + id);
         if (null == member) {
-
             member = memberRepository.findById(id).get();
             if (null != member) {
                 redisManager.add(ID + id, member);
