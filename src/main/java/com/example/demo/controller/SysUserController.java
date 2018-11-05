@@ -4,6 +4,7 @@ import com.example.demo.View.BaseView.ResultVO;
 import com.example.demo.common.constant.CommonConstants;
 import com.example.demo.common.enums.ResultEnum;
 import com.example.demo.dao.SysUser;
+import com.example.demo.interceptor.WebSecurityConfig;
 import com.example.demo.repository.SysUserRepository;
 import com.example.demo.service.impl.SysMenuServiceImpl;
 import lombok.extern.slf4j.Slf4j;
@@ -35,12 +36,18 @@ public class SysUserController {
         sysUser =sysUserRepository.findById(sysUser.getId()).get();
         if (!StringUtils.isEmpty(sysUser.getId())) {
              resultVO = new ResultVO(ResultEnum.SUCCESS);
-
+            request.getSession().setAttribute("",WebSecurityConfig.SESSION_KEY);
         } else {
              resultVO = new ResultVO(ResultEnum.FAIL);
         }
         //查找菜单
         resultVO.setData(sysMenuService.findTreeByPid(CommonConstants.SYS_MENU_ROOT));
         return resultVO;
+    }
+
+    @PostMapping(value = "logout")
+    public String logout(HttpServletRequest request){
+       request.getSession().removeAttribute("token");
+        return "redirect:/login";
     }
 }
